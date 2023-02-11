@@ -27,10 +27,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem "devise"
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem "omniauth"
 gem "omniauth-google-oauth2"
-
+gem 'omniauth-rails_csrf_protection'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
