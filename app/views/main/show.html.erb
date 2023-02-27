@@ -1,2 +1,18 @@
-<h1>You're logged in! Welcome to the Admin Dashboard!</h1>
-<%= link_to "Sign Out", destroy_admin_session_path %>
+<%# Home Page %>
+<%# <h1>You're logged in! Welcome to the Admin Dashboard!</h1> %>
+
+<%= stylesheet_link_tag "style.css" %>
+
+<div class="header">
+    <img src = "/assets/strongered.webp" alt="Logo"></a> <%# TODO: fix link to image %>
+    <button class="nav_button" onclick="window.location.href='/main/show'">Home</button>
+    <button class="nav_button" onclick="window.location.href='/main/show'">Upload Data</button>
+    <button class="nav_button" onclick="window.location.href='/main/show'">Help</button>
+    <%= link_to "Sign Out", destroy_admin_session_path %>
+</div>
+
+<div class="body">
+    <%# Show current user's name and pull info from database %>
+    <p> Welcome <%= current_admin.full_name %> <br> <%= current_admin.email %> </p>
+
+</div>

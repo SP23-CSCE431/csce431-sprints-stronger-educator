@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Stronger Educator supplementary application built with Ruby on Rails by
+Angel Ham, Michael Pham, Ethan McKinney, Andrew Zehrer
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+CSCE 431 - Software Engineering
+Texas A&M University
