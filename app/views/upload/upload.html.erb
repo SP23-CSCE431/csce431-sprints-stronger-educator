@@ -1,6 +1,3 @@
-<%# Home Page %>
-<%# <h1>You're logged in! Welcome to the Admin Dashboard!</h1> %>
-
 <%= stylesheet_link_tag "style.css" %>
 
 <div>
@@ -17,14 +14,19 @@
 </div>
 
 <div class="body">
-    <%# Show current user's name and pull info from database %>
-    <p> Welcome <%= current_admin.full_name %> <br> <%= current_admin.email %> <br>
-    This is the Main Page</p>
-    <%= image_tag ("Attendance_graph.png") %>
+    <p>This is the Upload Page</p>
+
+
     <form>
       <!-- Dummy data that will be updated to contain a template field of data for the user to enter data into -->
-        <label for="rec">Recommendation Report:</label>
-        <input type="text" id="rec" name="rec"><br>
+        <label for="school_id">School ID:</label>
+        <input type="text" id="school_id" name="school_ide"><br>
+        <label for="df1">Data Field 1:</label>
+        <input type="text" id="df1" name="df1"><br>
+        <label for="df2">Data Field 2:</label>
+        <input type="text" id="df2" name="df2"><br>
+        <label for="df3">Data Field 3:</label>
+        <input type="text" id="df3" name="df3"><br>
         <input type="submit" value="Submit">
     </form>
 
