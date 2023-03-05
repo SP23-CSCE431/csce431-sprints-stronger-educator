@@ -23,27 +23,26 @@
 
 	<form>
 		<!-- Dummy data that will be updated to contain a template field of data for the user to enter data into -->
-		<label for="user_id">User ID:</label> <%# we can assign this automatically in postgres %>
-		<input type="text" id="user_id" name="user_id"><br>
+         
+        <%# Grab the user's name from current_admin.full_name %>
+        <label for="name">First and Last Name: </label>
+		<input type="text" id="name" placeholder="<%= current_admin.full_name %>"><br>
 
-		<label for="df1">First and Last Name:</label>
-		<input type="text" id="df1" name="df1"><br>
+        <%# Grab the user's email from current_admin.email %>
+        <label>E-mail: </label>
+        <input type="text" placeholder="<%= current_admin.email %>"><br>
 
-		<label for="df2">E-mail Address:</label>
-		<input type="text" id="df2" name="df2"><br>
+		<label>District ID:</label> <%# how is the user going to know this? %>
+		<input type="text"><br>
 
-        <label for="df5">Street Address:</label> <%# is this really needed? %>
-		<input type="text" id="df5" name="df5"><br>
-
-		<label for="df3">District ID:</label> <%# how is the user going to know this? %>
-		<input type="text" id="df3" name="df3"><br>
-
-        <label for="df4">Campus ID:</label> <%# how is the user going to know this? %>
-        <input type="text" id="df4" name="df4"><br>
+        <label>Campus ID:</label> <%# how is the user going to know this? %>
+        <input type="text"><br>
 		
         <%# Submit button needs to send all this data into the users table, and then send the user to main page%>
         <input type="submit" value="Submit">
+
 	</form>
+
 </div>
 
 </body>
