@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stronger Educator</title>
+	<%= stylesheet_link_tag "style.css" %>
+</head>
+
+<body>
+
+<div class="logo">
+	<%# Stronger Educator Logo at the top of the page %>
+	<%= image_tag ("strongered.webp") %>
+</div>
+
+<div class="header">
+    <%# Make buttons out of the links below %>
+	<navbutton style="background-color: #ffffbb;"> <%= link_to "Help", "/help" %> </navbutton>
+    <navbutton style="background-color: #ffbbbb;"> <%= link_to "Sign Out", destroy_admin_session_path %> </navbutton>
+</div>
+
+<div class="body">
+    <p>Please enter your account details.</p>
+
+	<form>
+		<!-- Dummy data that will be updated to contain a template field of data for the user to enter data into -->
+         
+        <%# Grab the user's name from current_admin.full_name %>
+        <label for="name">First and Last Name: </label>
+		<input type="text" id="name" placeholder="<%= current_admin.full_name %>"><br>
+
+        <%# Grab the user's email from current_admin.email %>
+        <label>E-mail: </label>
+        <input type="text" placeholder="<%= current_admin.email %>"><br>
+
+		<label>District ID:</label> <%# how is the user going to know this? %>
+		<input type="text"><br>
+
+        <label>Campus ID:</label> <%# how is the user going to know this? %>
+        <input type="text"><br>
+		
+        <%# Submit button needs to send all this data into the users table, and then send the user to main page%>
+        <input type="submit" value="Submit">
+
+	</form>
+
+</div>
+
+</body>
+</html>

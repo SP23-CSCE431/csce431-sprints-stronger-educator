@@ -1,5 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stronger Educator</title>
+	<%= stylesheet_link_tag "style.css" %>
+</head>
+
+<body>
+
+<div class="logo">
+	<%# Stronger Educator Logo at the top of the page %>
+	<%= image_tag ("strongered.webp") %>
+</div>
+
+<div class="header">
+    <%# Header will contain nothing for now %>
+</div>
+
 
 <h2>You are not signed in. Please sign in to continue.</h2>
-<%= button_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path%>
-<%# <%= button_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, method: :post, data: { turbo: false } %> 
+<div class="body">
+    <%= button_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path%>
+</div>
 
+</body>
+</html>
