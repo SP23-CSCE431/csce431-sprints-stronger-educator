@@ -19,6 +19,12 @@
 	<navbutton style="background-color: #ffbbbb;"> <%= link_to "Sign Out", destroy_admin_session_path %> </navbutton>
 </div>
 
+<%= form_with url: import_upload_index_path, method: :post do |form| %>
+  <%= form.file_field :file, accept: ".csv" %>
+  <%= form.button "Import" %>
+<% end %>
+
+
 <div class="body">
 	<p>This is the Upload Page</p>
 
@@ -39,6 +45,10 @@
 		<input type="submit" value="Submit">
 	</form>
 </div>
+
+
+
+
 
 </body>
 </html>
