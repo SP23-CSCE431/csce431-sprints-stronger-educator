@@ -10,6 +10,11 @@ class User < ApplicationRecord
         end
     end
 
+    validates :name, presence: true
+    validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
+    validates :campus_id, presence: true
+    validates :district_id, presence: true
+
     private
 
     def user_params

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_31_183032) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_190926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_183032) do
     t.bigint "district_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_admin", default: false
     t.index ["campus_id"], name: "index_users_on_campus_id"
     t.index ["district_id"], name: "index_users_on_district_id"
     t.index ["id"], name: "index_users_on_id", unique: true
