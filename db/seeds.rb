@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Campuses.create(campus_id: 1, name: "Test Campus")
+# these already exist for me (andrew)
+#District.create(district_id: 1, name: "Test District")
+#Campus.create(campus_id: 1, name: "Test Campus", districts_id: 1)
 
-Districts.create(district_id: 1, name: "Test District")
+User.create(user_id: 1, name: "Test User", email: "a", campuses_id: 1, districts_id: 1)
