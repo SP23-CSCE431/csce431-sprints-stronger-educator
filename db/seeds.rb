@@ -13,4 +13,5 @@
 # District.create(id: 24, name: "Test District 24")
 # Campus.create(id: 1, name: "Test Campus", district_id: 1)
 # User.create(id: 1, name: "Test User", email: "test@email", campus_id: 1, district_id: 1)
-District.create(id: 0, name: "No District")
+# District.create(id: 109901, name: "Abbott ISD")
+User.create(id: 1, name: "Ethan McKinney", email: "ethan.mckinney@tamu.edu", is_admin: true)
