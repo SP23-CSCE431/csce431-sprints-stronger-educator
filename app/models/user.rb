@@ -20,4 +20,8 @@ class User < ApplicationRecord
     def user_params
         params.require(:user).permit(:user_id, :name, :email, :campus_id, :district_id)
     end
+
+    def admin?
+      is_admin = true
+    end
 end

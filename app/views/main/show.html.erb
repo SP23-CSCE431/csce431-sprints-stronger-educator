@@ -22,8 +22,8 @@
 
 <div class="body">
     <%# Show current user's name and pull info from database %>
-    <p> 
-		Welcome <%= current_admin.full_name %> <br> <%= current_admin.email %> <br> 
+    <p>
+		Welcome <%= current_admin.full_name %> <br> <%= current_admin.email %> <br>
 		This is the Main Page
 	</p>
 
@@ -37,10 +37,15 @@
         <input type="submit" value="Submit">
     </form>
 
-	<div>
-		<p> Temp link to account page: </p>
-		<button> <%= link_to "Users", "/users" %> </button>
-	</div>
+<!-- Only Users listed as an admin are able to view this button thus visit this page -->
+	<% if @user[0]['is_admin'] == true%>
+  	<div>
+	  	<p> Temp link to account page: </p>
+		  <button>
+			 <%= link_to "Users", "/users" %>
+		  </button>
+	  </div>
+	<% end %>
 </div>
 
 </body>
