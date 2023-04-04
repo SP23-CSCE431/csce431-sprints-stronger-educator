@@ -47,7 +47,5 @@ class UsersController < ApplicationController
       @user ||= User.new # Initialize @user if it is not present
       render :edit, status: :ok
     end
-
-
   end
 end
