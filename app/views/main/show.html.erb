@@ -22,9 +22,11 @@
 
 <div class="body">
     <%# Show current user's name and pull info from database %>
-    <p> 
-		Welcome <%= current_admin.full_name %> <br> <%= current_admin.email %> <br> 
+    <p>
+		Welcome <%= current_admin.full_name %> <br> <%= current_admin.email %> <br>
 		This is the Main Page
+    <p> 
+		Welcome <%= current_user.full_name %> (<%= current_user.email %>) <br> 
 	</p>
 
     <%= image_tag ("Attendance_graph.png") %>
@@ -37,11 +39,26 @@
         <input type="submit" value="Submit">
     </form>
 
-	<div>
-		<p> Temp link to account page: </p>
-		<button> <%= link_to "Account", "/account" %> </button>
-	</div>
+<!-- Only Users listed as an admin are able to view this button thus visit this page -->
+	<% if @user[0]['is_admin'] == true%>
+  	<div>
+	  	<p> Temp link to users page:   <button>
+			 <%= link_to "Users", "/users" %>
+		  </button> </p>
+	  </div>
+	<% end %>
+	
 </div>
 
 </body>
 </html>
+
+
+    <%# <%= image_tag ("Attendance_graph.png") %>
+    <%# <form> %>
+      	<%# <!-- Dummy data that will be updated to contain a template field of data for the user to enter data into --> %>
+        <%# <label for="rec">Recommendation Report:</label> %>
+        <%# <input type="text" id="rec" name="rec"><br> %>
+
+        <%# <input type="submit" value="Submit"> %>
+    <%# </form> %>

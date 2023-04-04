@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stronger Educator</title>
+	<%= stylesheet_link_tag "style.css" %>
+</head>
+
+<body>
+
+<div class="logo">
+	<%# Stronger Educator Logo at the top of the page %>
+	<%= image_tag ("strongered.webp") %>
+</div>
+
+<div class="header">
+    <%# Make buttons out of the links below %>
+	<navbutton style="background-color: #ffffbb;"> <%= link_to "Help", "/help" %> </navbutton>
+    <navbutton style="background-color: #ffbbbb;"> <%= link_to "Sign Out", destroy_admin_session_path %> </navbutton>
+</div>
+
+<div class="body">
+    <%# initialize a user object %>
+    <% @user = User.new %>
+
+    <p>Please enter the account details.</p>
+
+	<%= form_for @user do |f| %>
+        <%= f.label :name, "First and Last Name: " %>
+        <%= f.text_field :name %>
+        <% if @user.errors[:name].any? %>
+            <div class="flash error">
+                <%= flash[:error] %>
+                <%# <%= @user.errors[:name].first %> %>
+            </div>
+        <% end %>
+        <br>
+
+        <%= f.label :email, "Email: " %>
+        <%= f.text_field :email %>
+        <% if @user.errors[:name].any? %>
+            <div class="flash error">
+                <%= flash[:error] %>
+                <%# <%= @user.errors[:name].first %> %>
+            </div>
+        <% end %>
+        <br>
+
+        <%= f.label :name, "Campus ID: " %>
+        <%= f.text_field :campus_id %>
+        <% if @user.errors[:name].any? %>
+            <div class="flash error">
+            <   %= flash[:error] %>
+                <%# <%= @user.errors[:name].first %> %>
+            </div>
+        <% end %>
+        <br>
+
+        <%= f.label :name, "District ID: " %>
+        <%= f.text_field :district_id %>
+        <% if @user.errors[:name].any? %>
+            <div class="flash error">
+                <%= flash[:error] %>
+                <%# <%= @user.errors[:name].first %> %>
+            </div>
+        <% end %>
+        <br>
+
+        <%= f.submit "Submit" %>
+    <% end %>
+
+</div>
+
+</body>
+</html>

@@ -74,3 +74,17 @@ a:visited {
     line-height: 100px;
     vertical-align: middle;
 }
+
+.flash {
+    text-align: center;
+}
+
+.flash.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.flash.error {
+    background-color: #f2dede;
+    color: #a94442;
+}

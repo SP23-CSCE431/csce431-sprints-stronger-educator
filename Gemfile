@@ -31,6 +31,9 @@ gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem 'omniauth-rails_csrf_protection'
+
+gem 'cancancan'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
