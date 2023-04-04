@@ -9,22 +9,30 @@
 
 # Implemented (if not, uncomment and run 'rails db:seed')
 
+require 'csv'
+file = File.open("db/DistrictsFinal_test2.csv", "r") do |file|
+  headers = file.gets
+  while line = file.gets
+    name,iden,tea,desc,nces,charter,charterSchool = line.split(",")
+    district = District.create(name: name, district_id: iden)
+    # For debug purposes
+    # puts "Created district: #{district.name} : #{district.district_id}"
+  end
+file.close
+end
 
-# require 'csv'
-# puts "Seeding districts..."
-# CSV.foreach('db/District-Type2021.csv', headers: true) do |row|
-  # district = District.create(name: row['District'], id: row['District Number'])
-  # puts "Created district: #{district.name}"
-# end
-# puts "Finished seeding districts."
-
-
-# puts "Seeding campuses..."
-# CSV.foreach('db/campus-analyze-2020-21.csv', headers: true) do |row|
-#   campus = Campus.create(name: row['Campus Name'], id: row['Campus'])
-#   puts "Created campus: #{campus.name}"
-# end
-# puts "Finished seeding campuses."
+file = File.open("db/CampusFinal_test2.csv", "r") do |file|
+    headers = file.gets
+  while line = file.gets
+    name,iden,type,desc = line.split(",")
+    districtID = iden.slice(0,6) # Get first 6 elements/digits
+    campusID = iden.slice(6,9) # Get last 3 elements/digits
+    campus = Campus.create(name: name, campus_id: campusID, district_id: districtID)
+    # For debug purposes
+    # puts "Created campus: #{campus.name} : #{campus.campus_id}  : #{campus.district_id}"
+  end
+file.close
+end
 
 
 District.create(id: 1, name: "Test District")
