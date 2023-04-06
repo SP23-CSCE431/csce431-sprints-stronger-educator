@@ -6,17 +6,6 @@
 </head>
 
 <body>
-
-<div class="logo">
-	<%# Stronger Educator Logo at the top of the page %>
-	<%= image_tag ("strongered.webp") %>
-</div>
-
-<div class="header">
-    <%# Header will contain nothing for now %>
-</div>
-
-
 <h2>You are not signed in. Please sign in to continue.</h2>
 <div class="body">
     <%= button_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path%>

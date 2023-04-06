@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= stylesheet_link_tag "style.css" %>
+</head>
+
+<body>
+<div class="body">
+    <p> 
+        Click on a user's name to edit their information. <br>
+        Click on table headings to sort. 
+    </p>
+    <table class="tablesorter">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Campus ID</th>
+            <th>District ID</th>
+            <th>Admin?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>
+            <tr data-user-id="<%= user.id %>">
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.campus_id %></td>
+                <td><%= user.district_id %></td>
+                <td><%= user.is_admin %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            $(".tablesorter").tablesorter();
+            $('table td:nth-child(5):contains("true")').text('Yes');
+            $('table td:nth-child(5):contains("false")').text('');
+        });
+
+        $('tr[data-user-id]').click(function() {
+            var user_id = $(this).data('user-id');
+            window.location.href = "/users/" + user_id + "/edit";
+        });
+
+    </script>
+
+</div>
+</body>
+
+</html>

@@ -4,6 +4,7 @@
 	<%= stylesheet_link_tag "style.css" %>
 </head>
 
+<% @current_user ||= User.find_by(email: current_admin.email) %>
 <% @campus = campus_find_by(current_user.campus_id) %>
 <% @district = district_find_by(current_user.district_id) %>
 

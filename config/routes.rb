@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users, except: [:show]
+  get '/users/index', to: 'users#index', as: 'users_index'
 end
