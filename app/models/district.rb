@@ -10,6 +10,9 @@ class District < ApplicationRecord
         end
     end
 
+    validates :name, presence: true
+    validates :district_id, presence: true
+
     private
 
     def district_params

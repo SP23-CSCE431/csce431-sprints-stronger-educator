@@ -48,4 +48,23 @@ class UsersController < ApplicationController
       render :edit, status: :ok
     end
   end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to root_path, notice: 'User was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path, notice: 'User was successfully deleted.'
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
 end

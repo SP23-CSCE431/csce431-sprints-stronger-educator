@@ -1,23 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stronger Educator</title>
 	<%= stylesheet_link_tag "style.css" %>
 </head>
 
 <body>
-
-<div class="logo">
-	<%# Stronger Educator Logo at the top of the page %>
-	<%= image_tag ("strongered.webp") %>
-</div>
-
-<div class="header">
-    <%# Make buttons out of the links below %>
-	<navbutton style="background-color: #ffffbb;"> <%= link_to "Help", "/help" %> </navbutton>
-    <navbutton style="background-color: #ffbbbb;"> <%= link_to "Sign Out", destroy_admin_session_path %> </navbutton>
-</div>
-
 <div class="body">
     <%# initialize a user object %>
     <% @user = User.new %>
@@ -30,7 +17,7 @@
         <% if @user.errors[:name].any? %>
             <div class="flash error">
                 <%= flash[:error] %>
-                <%# <%= @user.errors[:name].first %> %>
+                <%#= @user.errors[:name].first %>
             </div>
         <% end %>
         <br>
@@ -40,7 +27,7 @@
         <% if @user.errors[:name].any? %>
             <div class="flash error">
                 <%= flash[:error] %>
-                <%# <%= @user.errors[:name].first %> %>
+                <%#= @user.errors[:name].first %>
             </div>
         <% end %>
         <br>
@@ -50,7 +37,7 @@
         <% if @user.errors[:name].any? %>
             <div class="flash error">
             <   %= flash[:error] %>
-                <%# <%= @user.errors[:name].first %> %>
+                <%#= @user.errors[:name].first %>
             </div>
         <% end %>
         <br>
@@ -60,7 +47,7 @@
         <% if @user.errors[:name].any? %>
             <div class="flash error">
                 <%= flash[:error] %>
-                <%# <%= @user.errors[:name].first %> %>
+                <%#= @user.errors[:name].first %>
             </div>
         <% end %>
         <br>

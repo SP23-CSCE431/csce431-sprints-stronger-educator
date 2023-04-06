@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GoogleOAuthDevice</title>
+    <title>Stronger Educator</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style>
-        .flash__alert   { color: red; }
-        .flash__notice  { color: blue; }
-        .flash__success { color: green; }
+      .flash__alert   { color: red; }
+      .flash__notice  { color: blue; }
+      .flash__success { color: green; }
     </style>
   </head>
 
   <body>
+    <div class="logo">
+      <%# Stronger Educator Logo at the top of the page %>
+      <%= image_tag ("strongered.webp") %>
+    </div>
+
+    <div class="header">
+      <%# Make buttons out of the links below %>
+      <navbutton style="background-color: #bbbbff;"> <%= link_to "Main", "/" %> </navbutton>
+      <navbutton style="background-color: #bbffbb;"> <%= link_to "Upload Data", "/upload" %> </navbutton>
+      <navbutton style="background-color: #ffffbb;"> <%= link_to "Help", "/help" %> </navbutton>
+      <navbutton style="background-color: #ffbbbb;"> <%= link_to "Sign Out", destroy_admin_session_path %> </navbutton>
+    </div>
+
+    <%# if user is admin, they can see this bar %>
+    <% if current_user && current_user.is_admin %>
+      <div class="header">
+        For Admins:
+        <navbutton style="background-color: #bbbbbb;"> <%= link_to "Add User", "/users" %> </navbutton>
+      </div>
+    <% end %>
+
     <% if flash.any? %>
       <% flash.each do |key, value| -%>
         <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
       <% end -%>
     <% end %>
+    
     <%= yield %>
   </body>
 </html>

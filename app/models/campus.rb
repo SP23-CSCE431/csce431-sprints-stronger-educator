@@ -10,6 +10,10 @@ class Campus < ApplicationRecord
         end
     end
 
+    validates :name, presence: true
+    validates :campus_id, presence: true
+    validates :district_id, presence: true
+
     private
 
     def campus_params
