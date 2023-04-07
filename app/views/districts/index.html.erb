@@ -18,14 +18,14 @@
         <thead>
             <tr>
             <th>Name</th>
-            <th>District ID str</th>
+            <th>District ID</th>
             </tr>
         </thead>
         <tbody>
             <% @districts.each do |district| %>
             <tr data-district-id="<%= district.id %>">
                 <td><%= district.name %></td>
-                <td><%= district.district_id %></td>
+                <td><%= district.id %></td>
             </tr>
             <% end %>
         </tbody>
@@ -36,8 +36,8 @@
         });
 
         $('tr[data-district-id]').click(function() {
-            var district_district_id = $(this).data('district-district-id');
-            window.location.href = "/districts/" + district_district_id + "/edit";
+            var district_id = $(this).data('district-id');
+            window.location.href = "/districts/" + district_id + "/edit";
         });
 
     </script>

@@ -4,7 +4,7 @@ class CampusesController < ApplicationController
   end
 
   def campus_params
-    params.require(:campus).permit(:id, :name, :district_id, :campus_id)
+    params.require(:campus).permit(:id, :name, :district_id)
   end
 
   def create
