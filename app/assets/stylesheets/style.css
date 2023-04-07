@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .logo {
@@ -51,7 +52,7 @@ navbutton {
     font-weight: bold;
     text-align: center;
     display: inline-block;
-    width: 100px;
+    width: 150px;
     height: 30px;
 }
 

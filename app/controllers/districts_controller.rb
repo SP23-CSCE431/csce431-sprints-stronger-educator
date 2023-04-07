@@ -3,34 +3,41 @@ class DistrictsController < ApplicationController
     @district = District.new
   end
 
-  def district_params
-    params.require(:district).permit(:id, :name, :district_id)
-  end
 
   def create
-    # Check if district already exists
-    if District.exists?(id: @district.id)
+    @district = District.new(district_params)
+    @district_query = District.find_by(district_id: @district.district_id)
+
+    # If district query is nil, create a new district object
+    if @district_query == nil
+      @district = District.new(district_params)
+    else
       flash.now[:error] = "District with that id already exists. Please try again."
       render 'districts'
-    # Check if the district object is valid
-    elsif @district.valid?
+    end
+    
+    if @district.valid?
       @district.save
       redirect_to root_path, notice: 'District was successfully created.'
     else
-      flash.now[:error] = "Invalid information. Please try again."
+      flash.now[:error] = "District id is: #{@district.id}. Invalid information. Please try again."
       render 'districts'
     end
+  end
 
-    def edit
-      @district = District.find(params[:id])
-      @district ||= District.new # Initialize @campus if it is not present
-      render :edit, status: :ok
-    end
+  def district_params
+    params.require(:district).permit(:district_id, :name)
+  end
+
+  def edit
+    @district = District.find(params[:id])
+    @district ||= District.new # Initialize @campus if it is not present
+    render :edit, status: :ok
   end
 
   def update
     @district = District.find(params[:id])
-    if @district.update_attributes(district_params)
+    if @district.update(district_params)
       redirect_to root_path, notice: 'District was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
@@ -49,5 +56,9 @@ class DistrictsController < ApplicationController
 
   def find_by
     @district = district.find_by(id: params[:id])
+  end
+
+  def index
+    @districts = District.all
   end
 end

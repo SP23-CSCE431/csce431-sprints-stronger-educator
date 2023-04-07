@@ -35,9 +35,13 @@
 # end
 
 
-# District.create(id: 1, name: "Test District", district_id: "1")
-# Campus.create(id: 1, name: "Test Campus", district_id: 1, campus_id: "1")
+District.create(id: 1, name: "Test District", district_id: "1")
+Campus.create(id: 1, name: "Test Campus", district_id: 1, campus_id: "1")
 
-# User.create(id: 0, name: "Test User", email: "test@email", campus_id: 1, district_id: 1)
-# User.create(id: 999, name: "Andrew Zehrer", email: "andrewzehrer@tamu.edu", campus_id: 1, district_id: 1, is_admin: true)
-# User.create(id: 998, name: "Ethan McKinney", email: "ethan.mckinney@tamu.edu", campus_id: 1, district_id: 1, is_admin: true)
+User.create(id: 0, name: "Test User", email: "test@email", campus_id: 1, district_id: 1)
+User.create(id: 1, name: "Andrew Zehrer", email: "andrewzehrer@tamu.edu", campus_id: 1, district_id: 1, is_admin: true)
+User.create(id: 2, name: "Ethan McKinney", email: "ethan.mckinney@tamu.edu", campus_id: 1, district_id: 1, is_admin: true)
+
+ActiveRecord::Base.connection.execute("SELECT setval(pg_get_serial_sequence('districts', 'id'), #{ District.maximum(:id) + 1})")
+ActiveRecord::Base.connection.execute("SELECT setval(pg_get_serial_sequence('campuses', 'id'), #{Campus.maximum(:id) + 1})")
+ActiveRecord::Base.connection.execute("SELECT setval(pg_get_serial_sequence('users', 'id'), #{User.maximum(:id) + 1})")
