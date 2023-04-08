@@ -119,11 +119,15 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (1.1.5)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -146,6 +150,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.17.0)
     msgpack (1.6.0)
@@ -194,6 +199,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
     rack-protection (3.0.5)
       rack
     rack-test (2.0.2)
@@ -275,6 +282,8 @@ GEM
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.13.0)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.8.1)
@@ -333,6 +342,7 @@ DEPENDENCIES
   debug
   devise!
   factory_bot_rails
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   omniauth
@@ -340,6 +350,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-cors
   rails (~> 7.0.4, >= 7.0.4.2)
   rspec-rails (~> 5.0.0)
   rubocop
