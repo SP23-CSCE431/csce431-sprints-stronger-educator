@@ -6,33 +6,76 @@
 
 <body>
 <div class="body">
-    <%# initialize a district object %>
-    <% @district = District.new %>
+    <div class="split-columns">
+    <div class="left-column">
+        <h1> Districts </h1>
+        <%# initialize a district object %>
+        <% @district = District.new %>
 
-    <p>Please enter the district details.</p>
+        <p>Please enter the district details.</p>
 
-	<%= form_for @district do |f| %>
-        <%= f.label :name, "District Name: " %>
-        <%= f.text_field :name %>
-        <% if @district.errors[:name].any? %>
-            <div class="flash error">
-                <%= flash[:error] %>
-            </div>
+        <%= form_for @district do |f| %>
+            <%= f.label :name, "District Name: " %>
+            <%= f.text_field :name %>
+            <% if @district.errors[:name].any? %>
+                <div class="flash error">
+                    <%= flash[:error] %>
+                </div>
+            <% end %>
+            <br>
+
+            <%= f.label :id, "District ID: " %>
+            <%= f.text_field :id %>
+            <% if @district.errors[:id].any? %>
+                <div class="flash error">
+                    <%= flash[:error] %>
+                </div>
+            <% end %>
+            <br>
+
+            <%= f.submit "Submit" %>
         <% end %>
-        <br>
+    </div>
 
-        <%= f.label :id, "District ID: " %>
-        <%= f.text_field :id %>
-        <% if @district.errors[:id].any? %>
-            <div class="flash error">
-                <%= flash[:error] %>
-            </div>
+    <div class="right-column">
+        <h1> Campuses </h1>
+        <%# initialize a district object %>
+        <% @campus = Campus.new %>
+
+        <p>Please enter the campus details.</p>
+
+        <%= form_for @campus do |f| %>
+            <%= f.label :name, "Campus Name: " %>
+            <%= f.text_field :name %>
+            <% if @campus.errors[:name].any? %>
+                <div class="flash error">
+                    <%= flash[:error] %>
+                </div>
+            <% end %>
+            <br>
+
+            <%= f.label :id, "Campus ID: " %>
+            <%= f.text_field :id %>
+            <% if @campus.errors[:id].any? %>
+                <div class="flash error">
+                    <%= flash[:error] %>
+                </div>
+            <% end %>
+            <br>
+
+            <%= f.label :district_id, "District ID: " %>
+            <%= f.text_field :district_id %>
+            <% if @campus.errors[:district_id].any? %>
+                <div class="flash error">
+                    <%= flash[:error] %>
+                </div>
+            <% end %>
+            <br>
+
+            <%= f.submit "Submit" %>
         <% end %>
-        <br>
-
-        <%= f.submit "Submit" %>
-    <% end %>
-
+    </div>
+    </div>
 </div>
 
 </body>
