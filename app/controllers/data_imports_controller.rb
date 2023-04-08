@@ -1,5 +1,5 @@
 class DataImportsController < ApplicationController
-  before_action :set_post, only: %i[ show update destroy]
+  before_action :set_data_imports, only: %i[ show update destroy]
   def new
     @data_import = DataImport.new
   end
@@ -32,7 +32,7 @@ class DataImportsController < ApplicationController
   
     # If both records exist, assign them to the user object
     if @campus && @district
-      @data_import = DataImport.new(data_import_params.except(:images))
+      @data_import = DataImport.new(data_import_params.except(:campus_id, :district_id, :images))
       @data_import.campus_id = @campus.id
       @data_import.district_id = @district.id
     else
@@ -41,7 +41,7 @@ class DataImportsController < ApplicationController
       return
     end
 
-    images = params[:post][:images]
+    images = params[:data_import][:images]
 
     if images
       images.each do |image|
@@ -72,9 +72,10 @@ class DataImportsController < ApplicationController
   end
 
   private
-    def set_data_imports
-      @data_import = DataImport.find(params[:id])
-    end
+  
+  def set_data_imports
+    @data_import = DataImport.find(params[:id])
+  end
 
   # Only allow a list of trusted parameters through
   def data_import_params
