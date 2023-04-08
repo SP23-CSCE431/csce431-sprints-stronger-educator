@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Application Description
+This application is for use by Stronger Educator team members and their customers to view and manage public school data.
 
 ## Requirements
 
@@ -15,45 +15,34 @@ This code has been run and tested on:
 - Docker (Latest Container)
 
 
-## External Deps
+## External Dependencies
 
 - Docker - Download latest version at https://www.docker.com/products/docker-desktop
 - Heroku CLI - Download latest version at https://devcenter.heroku.com/articles/heroku-cli
-- Git - Downloat latest version at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-- GitHub Desktop (Not needed, but HELPFUL) at https://desktop.github.com/
+- Git - Download latest version at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- GitHub Desktop (Not required but helpful) at https://desktop.github.com/
 
 ## Installation
 
 Download this code repository by using git:
 
-`git clone https://github.com/SP23-CSCE431/csce431-sprints-stronger-educator.git`
- or 
- `git clone https://github.com/SP23-CSCE431/csce431-sprints-stronger-educator/`
+`git clone https://github.com/SP23-CSCE431/csce431-sprints-stronger-educator/`
 
 ## Tests
 
-An RSpec test suite is available and can be ran using:
+An RSpec test suite is available and can be run using:
 
-`rspec spec/`
-
-You can run all the test cases by running. This will run both the unit and integration tests.
-`rspec .`
+`rspec spec/` or `rails spec .`
 
 ## Execute Code
 
-Run the following code in Powershell if using windows or the terminal using Linux/Mac
+Run the following code in Windows PowerShell if using Windows or the terminal using Linux/Mac:
 
-Install the app
+To install the app: `bundle install && rails webpacker:install && rails db:create && db:migrate`
 
-`bundle install && rails webpacker:install && rails db:create && db:migrate`
+To run the app: `rails server --binding:0.0.0.0`
 
-
-Run the app
-`rails server --binding:0.0.0.0`
-
-
-The application can be seen using a browser and navigating to http://localhost:3000/
-
+The application can then be navigated to in your browser by entering the URL http://localhost:3000/
 
 ## Environmental Variables/Files
 
