@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'upload', to: 'upload#upload'
   get 'users', to: 'users#users'
   get 'districts', to: 'districts#districts'
+  get 'campuses', to: 'districts#districts'
+  get 'campuses/:id/edit_campus', to: 'campuses#edit_campus'
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
   devise_scope :admin do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
@@ -22,4 +24,8 @@ Rails.application.routes.draw do
   resources :districts, except: [:show]
   get '/districts/index', to: 'districts#index', as: 'districts_index'
   get '/districts/find_by/:id', to: 'districts#find_by'
+
+  resources :campuses, except: [:show]
+  get '/campuses/index', to: 'campuses#index', as: 'campuses_index'
+
 end

@@ -3,30 +3,17 @@ class DistrictsController < ApplicationController
     @district = District.new
   end
 
-
   def create
     @district = District.new(district_params)
-    @district_query = District.find_by(district_id: @district.district_id)
-
-    # If district query is nil, create a new district object
-    if @district_query == nil
-      @district = District.new(district_params)
+    if @district.save
+      redirect_to "/districts/index", notice: 'District was successfully created.'
     else
-      flash.now[:error] = "District with that id already exists. Please try again."
-      render 'districts'
-    end
-    
-    if @district.valid?
-      @district.save
-      redirect_to root_path, notice: 'District was successfully created.'
-    else
-      flash.now[:error] = "District id is: #{@district.id}. Invalid information. Please try again."
-      render 'districts'
+      redirect_to "/districts/index", notice: 'Invalid information. Please try again'
     end
   end
 
   def district_params
-    params.require(:district).permit(:district_id, :name)
+    params.require(:district).permit(:id, :name)
   end
 
   def edit
@@ -38,7 +25,7 @@ class DistrictsController < ApplicationController
   def update
     @district = District.find(params[:id])
     if @district.update(district_params)
-      redirect_to root_path, notice: 'District was successfully updated.'
+      redirect_to "/districts/index", notice: 'District was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,15 +34,11 @@ class DistrictsController < ApplicationController
   def destroy
     @district = District.find(params[:id])
     @district.destroy
-    redirect_to root_path, notice: 'District was successfully deleted.'
+    redirect_to "/districts/index", notice: 'District was successfully deleted.'
   end
 
   def show
     @district = District.find(params[:id])
-  end
-
-  def find_by
-    @district = district.find_by(id: params[:id])
   end
 
   def index

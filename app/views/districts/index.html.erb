@@ -6,41 +6,90 @@
 
 <body>
 
+<div class="hidden">
+    <% @campuses = Campus.all %>
+</div>
+
 <div class="body">
-    <p> 
-        Click on a district's name to edit its information. <br>
-        Click on table headings to sort. 
-    </p>
+    <div class="split-columns">
+    <div class="left-column">
+        <p> 
+            Click on a district's name to edit its information. <br>
+            Click on table headings to sort. 
+        </p>
 
-    <%#= @districts.inspect %>
+        <%#= @districts.inspect %>
 
-    <table class="tablesorter">
-        <thead>
-            <tr>
-            <th>Name</th>
-            <th>District ID str</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @districts.each do |district| %>
-            <tr data-district-id="<%= district.id %>">
-                <td><%= district.name %></td>
-                <td><%= district.district_id %></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-    <script>
-        $(document).ready(function() {
-            $(".tablesorter").tablesorter();
-        });
+        <table class="tablesorter">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>District ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @districts.each do |district| %>
+                <tr data-district-id="<%= district.id %>">
+                    <td><%= district.name %></td>
+                    <td><%= district.id %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <script>
+            $(document).ready(function() {
+                $(".tablesorter").tablesorter();
+            });
 
-        $('tr[data-district-id]').click(function() {
-            var district_district_id = $(this).data('district-district-id');
-            window.location.href = "/districts/" + district_district_id + "/edit";
-        });
+            $('tr[data-district-id]').click(function() {
+                var district_id = $(this).data('district-id');
+                window.location.href = "/districts/" + district_id + "/edit";
+            });
 
-    </script>
+        </script>
+    </div>
+
+    <div class="right-column">
+        <p> 
+            Click on a campus's name to edit its information. <br>
+            Click on table headings to sort. 
+        </p>
+
+        <%#= @campuses.inspect %>
+
+        <table class="tablesorter">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Campus ID</th>
+                <th>District ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @campuses.each do |campus| %>
+                <tr data-campus-id="<%= campus.id %>">
+                    <td><%= campus.name %></td>
+                    <td><%= campus.id %></td>
+                    <td><%= campus.district_id %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <script>
+            $(document).ready(function() {
+                $(".tablesorter").tablesorter();
+            });
+
+            $('tr[data-campus-id]').click(function() {
+                var campus_id = $(this).data('campus-id');
+                window.location.href = "/campuses/" + campus_id + "/edit_campus";
+            });
+
+        </script>
+    </div>
+    </div>
+    
+    
 
 </div>
 </body>

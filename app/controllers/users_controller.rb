@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to root_path, notice: 'User was successfully updated.'
+      redirect_to '/users/index', notice: 'User was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
