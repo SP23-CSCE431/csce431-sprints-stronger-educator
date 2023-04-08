@@ -7,29 +7,37 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
+# Angel stuff
+
+# require 'csv'
+# file = File.open("db/DistrictsFinal_test2.csv", "r") do |file|
+#   headers = file.gets
+#   while line = file.gets
+#     name,iden,tea,desc,nces,charter,charterSchool = line.split(",")
+#     district = District.create(name: name, district_id: iden)
+#     # For debug purposes
+#     # puts "Created district: #{district.name} : #{district.district_id}"
+#   end
+# file.close
+# end
+
+# file = File.open("db/CampusFinal_test2.csv", "r") do |file|
+#     headers = file.gets
+#   while line = file.gets
+#     name,iden,type,desc = line.split(",")
+#     districtID = iden.slice(0,6) # Get first 6 elements/digits
+#     campusID = iden.slice(6,9) # Get last 3 elements/digits
+#     campus = Campus.create(name: name, campus_id: campusID, district_id: districtID)
+#     # For debug purposes
+#     # puts "Created campus: #{campus.name} : #{campus.campus_id}  : #{campus.district_id}"
+#   end
+# file.close
+# end
+
 # Implemented (if not, uncomment and run 'rails db:seed')
 
+# District.create(name: "Test District", id: "123456")
+# Campus.create(name: "Test Campus", id: "123456789", district_id: "123456")
 
-require 'csv'
-puts "Seeding districts..."
-CSV.foreach('db/District-Type2021.csv', headers: true) do |row|
-  district = District.create(name: row['District'], id: row['District Number'])
-  puts "Created district: #{district.name}"
-end
-puts "Finished seeding districts."
-
-
-# puts "Seeding campuses..."
-# CSV.foreach('db/campus-analyze-2020-21.csv', headers: true) do |row|
-#   campus = Campus.create(name: row['Campus Name'], id: row['Campus'])
-#   puts "Created campus: #{campus.name}"
-# end
-# puts "Finished seeding campuses."
-
-
-# District.create(id: 1, name: "Test District")
-# District.create(id: 24, name: "Test District 24")
-# Campus.create(id: 1, name: "Test Campus", district_id: 1)
-# User.create(id: 1, name: "Test User", email: "test@email", campus_id: 1, district_id: 1)
-# District.create(id: 109901, name: "Abbott ISD")
-User.create(id: 1, name: "Ethan McKinney", email: "ethan.mckinney@tamu.edu", is_admin: true)
+# User.create(name: "Andrew Zehrer", email: "andrewzehrer@tamu.edu", campus_id: "123456789", district_id: "123456", is_admin: true)
+# User.create(name: "Ethan McKinney", email: "ethan.mckinney@tamu.edu", campus_id: "123456789", district_id: "123456", is_admin: true)

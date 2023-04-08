@@ -4,10 +4,10 @@ class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @admin = Admin.from_google(**from_google_params)
       # user = User.create_with(name: admin.full_name, email: admin.email, district_id: 1, campus_id: 1)
 
-      if admin.present?
+      if @admin.present?
         sign_out_all_scopes
         flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-        sign_in_and_redirect admin, event: :authentication
+        sign_in_and_redirect @admin, event: :authentication
       else
         flash[:alert] = t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
         redirect_to new_admin_session_path
@@ -34,14 +34,6 @@ class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         avatar_url: auth.info.image
       }
     end
-
-    # def from_google_params(
-    #     uid: auth.uid,
-    #     email: auth.info.email,
-    #     full_name: auth.info.name,
-    #     avatar_url: auth.info.image
-    # )
-    # end
 
     def auth
       @auth ||= request.env['omniauth.auth']

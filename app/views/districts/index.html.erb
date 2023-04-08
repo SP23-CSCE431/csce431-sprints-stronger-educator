@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= stylesheet_link_tag "style.css" %>
+</head>
+
+<body>
+
+<div class="body">
+    <p> 
+        Click on a district's name to edit its information. <br>
+        Click on table headings to sort. 
+    </p>
+
+    <%#= @districts.inspect %>
+
+    <table class="tablesorter">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>District ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @districts.each do |district| %>
+            <tr data-district-id="<%= district.id %>">
+                <td><%= district.name %></td>
+                <td><%= district.id %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            $(".tablesorter").tablesorter();
+        });
+
+        $('tr[data-district-id]').click(function() {
+            var district_id = $(this).data('district-id');
+            window.location.href = "/districts/" + district_id + "/edit";
+        });
+
+    </script>
+
+</div>
+</body>
+
+</html>

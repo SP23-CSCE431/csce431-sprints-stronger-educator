@@ -3,11 +3,13 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     create_table :users, id: :integer do |t|
       t.string :name
       t.string :email
-      t.references :campus, foreign_key: { to_table: :campuses, column: :id }
-      t.references :district, foreign_key: { to_table: :districts, column: :id }
+      t.string :district_id
+      t.string :campus_id
       t.timestamps
     end
 
     add_index :users, :id, unique: true
+    add_foreign_key :users, :districts, column: :district_id, primary_key: :id, on_delete: :cascade
+    add_foreign_key :users, :campuses, column: :campus_id, primary_key: :id, on_delete: :cascade
   end
 end

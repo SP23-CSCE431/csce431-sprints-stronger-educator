@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= stylesheet_link_tag "style.css" %>
+</head>
+
+<body>
+<div class="body">
+    <%# initialize a district object %>
+    <% @district = District.new %>
+
+    <p>Please enter the district details.</p>
+
+	<%= form_for @district do |f| %>
+        <%= f.label :name, "District Name: " %>
+        <%= f.text_field :name %>
+        <% if @district.errors[:name].any? %>
+            <div class="flash error">
+                <%= flash[:error] %>
+            </div>
+        <% end %>
+        <br>
+
+        <%= f.label :id, "District ID: " %>
+        <%= f.text_field :id %>
+        <% if @district.errors[:id].any? %>
+            <div class="flash error">
+                <%= flash[:error] %>
+            </div>
+        <% end %>
+        <br>
+
+        <%= f.submit "Submit" %>
+    <% end %>
+
+</div>
+
+</body>
+</html>

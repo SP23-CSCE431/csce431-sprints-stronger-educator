@@ -24,28 +24,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_190926) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
-  create_table "campuses", id: :serial, force: :cascade do |t|
+  create_table "campuses", id: :string, force: :cascade do |t|
     t.string "name"
-    t.bigint "district_id"
+    t.string "district_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["district_id"], name: "index_campuses_on_district_id"
     t.index ["id"], name: "index_campuses_on_id", unique: true
   end
 
   create_table "data_imports", id: :serial, force: :cascade do |t|
     t.binary "files", default: [], array: true
     t.binary "images", default: [], array: true
-    t.bigint "campus_id"
-    t.bigint "district_id"
+    t.string "district_id"
+    t.string "campus_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["campus_id"], name: "index_data_imports_on_campus_id"
-    t.index ["district_id"], name: "index_data_imports_on_district_id"
     t.index ["id"], name: "index_data_imports_on_id", unique: true
   end
 
-  create_table "districts", id: :serial, force: :cascade do |t|
+  create_table "districts", id: :string, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,19 +52,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_190926) do
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.bigint "campus_id"
-    t.bigint "district_id"
+    t.string "district_id"
+    t.string "campus_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_admin", default: false
-    t.index ["campus_id"], name: "index_users_on_campus_id"
-    t.index ["district_id"], name: "index_users_on_district_id"
     t.index ["id"], name: "index_users_on_id", unique: true
   end
 
-  add_foreign_key "campuses", "districts"
-  add_foreign_key "data_imports", "campuses"
-  add_foreign_key "data_imports", "districts"
-  add_foreign_key "users", "campuses"
-  add_foreign_key "users", "districts"
+  add_foreign_key "campuses", "districts", on_delete: :cascade
+  add_foreign_key "data_imports", "campuses", on_delete: :cascade
+  add_foreign_key "data_imports", "districts", on_delete: :cascade
+  add_foreign_key "users", "campuses", on_delete: :cascade
+  add_foreign_key "users", "districts", on_delete: :cascade
 end
