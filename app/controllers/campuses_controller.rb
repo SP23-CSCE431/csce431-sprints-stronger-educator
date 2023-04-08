@@ -32,6 +32,14 @@ class CampusesController < ApplicationController
 
   def update
     @campus = Campus.find(params[:id])
+    
+    # check if district exists
+    @district = District.find_by(id: params[:campus][:district_id])
+    if @district.nil?
+      redirect_to "/districts/index", notice: 'District not found. Please try again.'
+      return
+    end
+
     if @campus.update(campus_params)
       redirect_to "/districts/index", notice: 'Campus was successfully updated.'
     else
