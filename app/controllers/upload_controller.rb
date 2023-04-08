@@ -2,7 +2,12 @@ class UploadController < ApplicationController
   require 'csv'
   def import
     file = params[:file]
-    return redirect_to upload_index_path, notice: 'Only CSV please' unless file.content_type == "text/csv"
+    if file.nil?
+      return redirect_to upload_index_path, notice: 'No file selected. Please try again.'
+    end
+
+    return redirect_to upload_index_path, notice: 'Only CSV files are supported. Please try again.' unless file.content_type == "application/vnd.ms-excel"
+
     # binding.b 
     file = File.open(file)
     csv = CSV.parse(file, headers: true, col_sep: ';')
