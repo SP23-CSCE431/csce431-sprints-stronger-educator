@@ -32,7 +32,7 @@ class DataImportsController < ApplicationController
   
     # If both records exist, assign them to the user object
     if @campus && @district
-      @data_import = DataImport.new(data_import_params.except(:campus_id, :district_id, :images))
+      @data_import = DataImport.new(data_import_params.except(:images))
       @data_import.campus_id = @campus.id
       @data_import.district_id = @district.id
     else

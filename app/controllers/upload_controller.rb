@@ -6,9 +6,11 @@ class UploadController < ApplicationController
       return redirect_to upload_index_path, notice: 'No file selected. Please try again.'
     end
 
-    return redirect_to upload_index_path, notice: 'Only CSV files are supported. Please try again.' unless file.content_type == "application/vnd.ms-excel"
-
-    # binding.b 
+    return redirect_to upload_index_path, notice: 'Only CSV files are supported. Please try again.' unless file.content_type == "text/csv"
+    # return redirect_to upload_index_path, notice: 'Only CSV files are supported. Please try again.' unless file.content_type == "application/vnd.ms-excel"
+    # for the online website instead of localhost
+    
+    #takes in a csv file for parsing
     file = File.open(file)
     csv = CSV.parse(file, headers: true, col_sep: ';')
     #csv.each do |row|
@@ -18,6 +20,6 @@ class UploadController < ApplicationController
       #upload_hash[:first] = row['First name']
       #upload_hash[:last] = row['Last name']
     #end
-    redirect_to upload_index_path, notice: 'Users imported!'
+    redirect_to upload_index_path, notice: 'Data imported!'
   end
 end

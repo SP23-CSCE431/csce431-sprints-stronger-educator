@@ -1,7 +1,6 @@
 class DataImport < ApplicationRecord
     self.table_name = "data_imports"
     has_many_attached :images
-    
     def create
         @data_import = DataImport.new(data_import_params)
         if @data_import.save

@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%= stylesheet_link_tag "style.css" %>
+  <%= stylesheet_link_tag "style.css" %>
 </head>
 
 <body>
 
 <div class="body">
-	<p>This is the Upload Page</p>
-	
-	<%= form_with url: import_upload_index_path, method: :post do |form| %>
-		<%= form.file_field :file, accept: ".csv" %>
-		<%= form.button "Import" %>
-	<% end %>
+  <p>This is the Upload Page</p>
+  <%= link_to 'Download Data Template', 'Template_for_Campus_Data_Upload.csv' %>
+  <p>
+    <%= form_with url: import_upload_index_path, method: :post do |form| %>
+	<%= form.label :name, "Campus ID: " %>
+    <%= form.text_field :campus_id %>
+    <br>
+
+    <%= form.label :name, "District ID: " %>
+    <%= form.text_field :district_id %>
+    <br>
+
+	<%= form.file_field :file, accept: ".csv" %>
+	  <%= form.button "Import" %>
+    <% end %>
 </div>
 
 </body>
