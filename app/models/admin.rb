@@ -3,9 +3,10 @@ class Admin < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 
-  def self.from_google(email:, full_name:, uid:, avatar_url:)
+  def self.from_google(auth)
+    validates :email, presence: true
     # return nil unless email =~ /@gmail.com || @tamu.edu\z/
-    create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
+    create_with(uid: auth.uid, full_name: auth.info.name, avatar_url: auth.info.image).find_or_create_by!(email: auth.info.email)
   end
 
 end

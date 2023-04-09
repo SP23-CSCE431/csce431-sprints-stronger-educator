@@ -1,7 +1,7 @@
 class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
 
-      @admin = Admin.from_google(**from_google_params)
+      @admin = Admin.from_google(auth)
       # user = User.create_with(name: admin.full_name, email: admin.email, district_id: 1, campus_id: 1)
 
       if @admin.present?

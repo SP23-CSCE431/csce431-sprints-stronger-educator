@@ -1,6 +1,12 @@
 require 'rails_helper.rb'
 
 RSpec.describe User, type: :model do
+  describe "User table" do
+    it "contains data" do
+      expect(User.count).to be > 0
+    end
+  end
+  
   context "when creating a new user" do
     it "should be valid with valid attributes" do
       user = User.new(id: 0, name: "Test User", email: "test@email", campus_id: "1", district_id: "1")

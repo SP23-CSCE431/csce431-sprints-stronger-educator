@@ -10,19 +10,19 @@
 # Implemented (if not, uncomment and run 'rails db:seed')
 
 require 'csv'
-puts "Start scraping Districts."
+# puts "Start scraping Districts."
 file = File.open("db/DistrictsFinal_test2.csv", "r") do |file|
   headers = file.gets
   while line = file.gets
     name,iden,tea,desc,nces,charter,charterSchool = line.split(",")
     district = District.find_or_create_by(name: name, id: iden)
     # For debug purposes
-    puts "Created district: #{district.name} : #{district.id}"
+    # puts "Created district: #{district.name} : #{district.id}"
   end
 file.close
 end
-puts "End scraping Districts."
-puts "Start scraping Campuses."
+# puts "End scraping Districts."
+# puts "Start scraping Campuses."
 
 file = File.open("db/CampusFinal_test2.csv", "r") do |file|
     headers = file.gets
@@ -34,11 +34,11 @@ file = File.open("db/CampusFinal_test2.csv", "r") do |file|
 
     campus = Campus.find_or_create_by(name: name, id: iden, district_id: districtID)
     # For debug purposes
-    puts "Created campus: #{campus.name} : #{campus.id}  : #{campus.district_id}"
+    # puts "Created campus: #{campus.name} : #{campus.id}  : #{campus.district_id}"
   end
 file.close
 end
-puts "End scraping Campuses."
+# puts "End scraping Campuses."
 
 
 District.find_or_create_by(name: "Test District", id: "1")
