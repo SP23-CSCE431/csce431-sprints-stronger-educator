@@ -1,5 +1,6 @@
 class DataImportsController < ApplicationController
   before_action :set_data_imports, only: %i[ show update destroy]
+  
   def new
     @data_import = DataImport.new
   end
@@ -20,7 +21,6 @@ class DataImportsController < ApplicationController
 
   # POST /data_imports
   def create
-
     begin
       @campus = Campus.find_by(id: params[:data_import][:campus_id])
       @district = District.find_by(id: params[:data_import][:district_id])
@@ -56,7 +56,6 @@ class DataImportsController < ApplicationController
     end
   end
 
-
   # PATCH/PUT /data_imports/1
   def update
     if @data_import.update(data_import_params)
@@ -75,6 +74,10 @@ class DataImportsController < ApplicationController
   
   def set_data_imports
     @data_import = DataImport.find(params[:id])
+  end
+
+  def index
+    @data_imports = DataImport.all
   end
 
   # Only allow a list of trusted parameters through

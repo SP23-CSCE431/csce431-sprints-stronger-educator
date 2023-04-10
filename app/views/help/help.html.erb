@@ -1,131 +1,125 @@
 <%= stylesheet_link_tag "style.css" %>
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Help/FAQ</title>
-    <style>
-      /* CSS for the Help/FAQ page */
-  /* .heading {
-    background: linear-gradient(to right, #bbb, #ddd);
-    color: #fff;
-    display: inline-block;
+<head>
+  <title>Help/FAQ</title>
+
+  <style>
+    .heading {
+    background-color: #F9F9F9;
+    border-bottom: 1px solid #CCC;
+    padding: 0px;
+    color: black;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 20px;
+  }
+
+  .headerText {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  nav {
+    background-color: #fef;
+    border-bottom: 1px solid #e0e0e0;
     padding: 10px 20px;
-    border-radius: 5px;
-  } */
-  .heading {
-  background-color: #F9F9F9;
-  border-bottom: 1px solid #CCC;
-  padding: 0px;
-  color: black;
-  width: 100%;
-  margin: 0 auto;
-}
+  }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-header {
-  background-color: #f7f7f7;
-  color: #333;
-  padding: 20px;
-}
+  nav li {
+    display: inline-block;
+    margin-right: 20px;
+  }
 
-.headerText {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  text-align: center;
-}
+  nav a {
+    color: #333;
+    text-decoration: none;
+  }
 
+  nav a:hover {
+    color: #000;
+  }
 
-h1 {
-  font-size: 36px;
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
+  .faq-section {
+    margin: 20px;
+  }
 
-}
+  .faq-question {
+    font-size: 24px;
+    margin: 0;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
 
-h2 {
-  font-size: 28px;
-  font-weight: bold;
-  text-decoration: underline;
-  margin: 0;
-}
+  .faq-answer {
+    margin: 0;
+    padding: 20px 0;
+    color: #666;
+  }
 
-h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
-}
+  a {
+    color: #333;
+  }
 
-nav {
-  background-color: #fef;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 10px 20px;
-}
+  a:hover {
+    color: #000;
+  }
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  </style>
+</head>
 
-nav li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-nav a {
-  color: #333;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: #000;
-}
-
-.faq-section {
-  margin: 20px;
-}
-
-.faq-question {
-  font-size: 24px;
-  margin: 0;
-  padding: 20px 0;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.faq-answer {
-  margin: 0;
-  padding: 20px 0;
-  color: #666;
-}
-
-a {
-  color: #333;
-}
-
-a:hover {
-  color: #000;
-}
-
-    </style>
-  </head>
 <body>
   <header>
     <h1>Help/FAQ</h1>
   </header>
+
   <div class="headerText">
-    <p>This is the Help Page</p>
-    <p>This page will help explain how to navigate the website and use the features.</p>
+    <p>This page will help explain how to navigate the website and use its features.</p>
   </div>
 
   <nav>
@@ -145,19 +139,19 @@ a:hover {
     </div>
     <div class="faq-answer">
       <p>To create an account, reach out to your administrative contact 
-      from Stronger Educator with your preferred Google email address, as well as your Campus ID, 
+      from Stronger Educator with your preferred Google email address, as well as your Campus ID 
       and District ID. They will create an account for you and then you can login with your Google email.
       </p>
       <p>
-      Due to the privleged and sensitive student information that is processed, campuses and district accounts are only able to view their own district and campuses.
+      Due to the privileged and sensitive student information that is processed, campus and district accounts are only able to view their own information.
       </p>
     </div>
 
     <div class="faq-question">
-      <h3>How do I get started / How can I get in contact?</h3>
+      <h3>How do I get started? / How can I get in contact?</h3>
     </div>
     <div class="faq-answer">
-      <p>Please visit <a href="https://www.strongered.com/who-we-are"> Stronger Educator </a> to set up appointment with Dr. Anthony Luevanos or through the company email stronger@strongered.com. </p>
+      <p>Please visit <a href="https://www.strongered.com/who-we-are"> Stronger Educator </a> to make an appointment with Dr. Anthony Luévanos or through the company email <a href="mailto:stronger@strongered.com">stronger@strongered.com</a>. </p>
     </div>
   </div>
 
@@ -165,19 +159,19 @@ a:hover {
     <h2 class="heading">Account</h2>
 
     <div class="faq-question">
-      <h3>How do I change my Login/password?</h3>
+      <h3>How do I change my login/password?</h3>
     </div>
     <div class="faq-answer">
-      <p>Login for this website is secured through Google Authentication. If you have issues accessing your Google email account please reach out to the appropriate Google support services for assistance. 
-      Here is a link for your convenience <a href="https://support.google.com/accounts/troubleshooter/2402620?hl=en"> Google Support Account Troubleshooting. </a>
+      <p>Login for this website is secured through Google Authentication. If you have issues accessing your Google account, please reach out to the appropriate Google support services 
+      at this link: <a href="https://support.google.com/accounts/troubleshooter/2402620?hl=en"> Google Support - Account Troubleshooting. </a>
       </p>
     </div>
 
     <div class="faq-question">
-      <h3>How do I update my account information ?</h3>
+      <h3>How do I update my account information?</h3>
     </div>
     <div class="faq-answer">
-      <p>If your District or Campus Identifaciton information is incorrect, please notify the Stronger Educator admin team through the company email stronger@strongered.com. </p>
+      <p>If your District or Campus Identification information is incorrect, please notify the Stronger Educator admin team through the company email <a href="mailto:stronger@strongered.com">stronger@strongered.com</a>. </p>
     </div>
   </div>
 
@@ -188,12 +182,11 @@ a:hover {
       <h3>How do I upload data to be processed for my Campus/District?</h3>
     </div>
     <div class="faq-answer">
-      <p>Navigate to the [Upload Data] button on the navigation bar.</p>
+      <p>Click on the [Upload Data] button on the navigation bar.</p>
       <p>Download the template CSV file from our website.</p>
-      <p>Locally through a CSV editing program such as Excel or Google Sheets, edit and paste in the corresponding information.</p>
-      <p>Save the file locally and make sure it is in the ".csv" format, and then press the "Choose File" button and select the name of the .csv file you just saved</p>
-      <p>Finally hit the "Import" button to process the upload.</p>
-
+      <p>Using a CSV editing program, such as Excel or Google Sheets, edit and paste in the corresponding information.</p>
+      <p>Save the file locally and make sure it is in the ".csv" format. Then press the "Choose File" button and select the .csv file you just saved.</p>
+      <p>Finally, click the "Import" button to process the upload.</p>
     </div>
   </div>
 
@@ -201,10 +194,11 @@ a:hover {
     <h2 class="heading">Troubleshooting</h2>
 
     <div class="faq-question">
-      <h3>There is an error with the webpage, who can I reach out to about this?</h3>
+      <h3>I found an error with the webpage, who can I reach out to about this?</h3>
     </div>
     <div class="faq-answer">
-      <p>Thank you for bringing these to our attention! You may fill out this form: <a href="https://forms.gle/yRxqMDJY2PHt3HYa6"> Help Request</a>, and we will get back to you about the issue.</p>
+      <p>If you find an error with the webpage, please fill out the form below and we will get back to you about the issue. We appreciate your feedback!
+      <br> <br> <a href="https://forms.gle/yRxqMDJY2PHt3HYa6"> Stronger Educator Help Request</a> </p>
     </div>
 
     <div class="faq-question">
