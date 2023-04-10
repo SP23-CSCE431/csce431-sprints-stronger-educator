@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'campuses', to: 'districts#districts'
   get 'campuses/:id/edit_campus', to: 'campuses#edit_campus'
   get 'data_imports', to: 'data_imports#data_imports'
+  get 'data_imports/index', to: 'data_imports#index'
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
   devise_scope :admin do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session

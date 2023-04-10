@@ -1,6 +1,6 @@
 class DataImportsController < ApplicationController
   before_action :set_data_imports, only: %i[ show update destroy]
-  
+
   def new
     @data_import = DataImport.new
   end
