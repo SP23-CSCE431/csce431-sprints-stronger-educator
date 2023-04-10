@@ -35,6 +35,8 @@ gem 'omniauth-rails_csrf_protection'
 gem 'cancancan'
 gem 'rexml'
 
+gem 'jquery-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

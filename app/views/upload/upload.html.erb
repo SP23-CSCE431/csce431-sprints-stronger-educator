@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,31 @@
 	<%= form.file_field :file, accept: ".csv" %>
 	  <%= form.button "Import" %>
     <% end %>
+  <%# <%= form_with model: District.new do |f| %> 
+    <%# <div class="field"> %>
+      <%# <%= f.label :'District Name' %> 
+      <%# <%= f.select :district_id, District.all.collect { |p| [p.name, p.id] }, prompt: "Select a district", id: "district-select" %> 
+      <%# <%= f.text_field :district_id, id: "district-id-field" %> 
+      <%# <br> %>
+      <%# <%= f.submit "Create" %> 
+    <%# </div> %>
+  <%# <% end %> 
+
+
+
+
 </div>
 
+<%# 
+ <script>
+  function updateDistrictIdField(value) {
+    const districtName = document.querySelector(`option[value='${value}']`).innerText;
+    document.getElementById("district-id-field").value = districtName;
+  }
+  // function updateDistrictIdField(value) {
+  //   document.querySelector('input[name="district[district_id]"]').value = value;
+  // }
+
+</script> %>
 </body>
 </html>
