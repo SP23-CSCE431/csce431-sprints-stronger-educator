@@ -12,7 +12,7 @@
   <p>Please enter the account details.</p>
 
   <%= form_for @data_import do |f| %>
-    <%= f.label :name, "Campus ID: " %>
+    <%= f.label :campus_name, "Campus ID: " %>
     <%= f.text_field :campus_id %>
     <% if @data_import.errors[:name].any? %>
       <div class="flash error">
@@ -21,7 +21,7 @@
     <% end %>
     <br>
 
-    <%= f.label :name, "District ID: " %>
+    <%= f.label :district_name, "District ID: " %>
     <%= f.text_field :district_id %>
     <% if @data_import.errors[:name].any? %>
       <div class="flash error">

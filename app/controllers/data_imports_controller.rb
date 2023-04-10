@@ -12,11 +12,7 @@ class DataImportsController < ApplicationController
 
   # GET /data_imports/l
   def show
-    render json: @data_import.as_json(include: :images).merge(
-      images: @data_import.image.map do |image|
-        url_for(image)
-      end
-    )
+    @data_import = DataImport.find(params[:id])
   end
 
   # POST /data_imports
@@ -24,7 +20,7 @@ class DataImportsController < ApplicationController
     begin
       @campus = Campus.find_by(id: params[:data_import][:campus_id])
       @district = District.find_by(id: params[:data_import][:district_id])
-    rescue ActiveRecord::RecordNotFound
+      rescue ActiveRecord::RecordNotFound
       flash.now[:error] = "Invalid campus or district id"
       render 'data_import'
       return
@@ -32,7 +28,7 @@ class DataImportsController < ApplicationController
   
     # If both records exist, assign them to the user object
     if @campus && @district
-      @data_import = DataImport.new(data_import_params.except(:images))
+      @data_import = DataImport.new(data_import_params)
       @data_import.campus_id = @campus.id
       @data_import.district_id = @district.id
     else
@@ -49,10 +45,10 @@ class DataImportsController < ApplicationController
       end
     end
 
-    if @data_import.save
-      render json: @data_import, status: :created, location: @data_import
+    if @data_import.save!
+      redirect_to "/data_imports/index", notice: 'Image was successfully uploaded.'
     else
-      render json: @data_import.errors, status: :unprocessable_entity
+      redirect_to "/data_imports/index", notice: 'Invalid information. Please try again'
     end
   end
 

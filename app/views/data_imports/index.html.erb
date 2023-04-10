@@ -4,6 +4,10 @@
     <%= stylesheet_link_tag "style.css" %>
 </head>
 
+<div class="hidden">
+    <% @data_import = DataImport.all %>
+</div>
+
 <body>
 <div class="body">
     <p> 
@@ -21,16 +25,16 @@
         </thead>
         <tbody>
             <%# If data is not present, display a message %>
-            <% if @data_imports == nil %>
+            <% if @data_import == nil %>
                 <tr>
                     <td colspan="5">No data yet.</td>
                 </tr>
             <% else %>
-                <% @data_imports.each do |data_import| %>
+                <% @data_import.each do |data_import| %>
                     <tr data-user-id="<%= data_import.id %>">
                         <td><%= data_import.campus_id %></td>
                         <td><%= data_import.district_id %></td>
-                        <td><%= data_import.csv_files %></td>
+                        <td><%= data_import.files %></td>
                         <td><%= data_import.images %></td>
                     </tr>
                 <% end %>
