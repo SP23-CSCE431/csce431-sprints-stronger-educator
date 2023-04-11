@@ -54,6 +54,10 @@ class DataImportsController < ApplicationController
 
   # DELETE /data_imports/1
   def destroy
+    # Delete the file in /public/uploads that corresponds to the data import
+    File.delete(@data_import.csv_file_path) if @data_import.csv_file_path.present?
+    File.delete(@data_import.image_path) if @data_import.image_path.present?
+
     @data_import.destroy
     redirect_to "/data_imports/index", notice: "Data import was successfully destroyed."
   end
@@ -88,11 +92,11 @@ class DataImportsController < ApplicationController
     # Send the zip file to the browser for download
     send_file(zip_filename, filename: zip_filename, type: 'application/zip')
   
-    # clear the /public/uploads folder
-    FileUtils.rm_rf(Dir.glob("#{uploads_folder_path}/*"))
-
     # destroy all records in data_imports table
     DataImport.destroy_all
+
+    # clear the /public/uploads folder
+    FileUtils.rm_rf(Dir.glob("#{uploads_folder_path}/*"))
 
     # delete the zip file
     File.delete(zip_filename)

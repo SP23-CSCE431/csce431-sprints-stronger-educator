@@ -16,8 +16,8 @@ class UploadController < ApplicationController
       # Create a new data import record
       @data_import = DataImport.new(
         csv_file_path: csv_file_path.to_s,
-        campus_id: params[:campus_id],
-        district_id: params[:district_id]
+        campus_id: current_user.campus_id,
+        district_id: current_user.district_id
       )
       if @data_import.save
         redirect_to upload_index_path, notice: 'Data imported!'
