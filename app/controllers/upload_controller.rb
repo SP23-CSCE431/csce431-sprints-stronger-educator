@@ -1,23 +1,48 @@
 class UploadController < ApplicationController
-  require 'csv'
-  def import
-    file = params[:file]
-    if file.nil?
+  def create
+    uploaded_file = params[:csv_file]
+    uploaded_image = params[:image_file]
+
+    if uploaded_file.nil? && uploaded_image.nil?
       return redirect_to upload_index_path, notice: 'No file selected. Please try again.'
     end
 
-    return redirect_to upload_index_path, notice: 'Only CSV files are supported. Please try again.' unless file.content_type == "application/vnd.ms-excel"
+    if uploaded_file.present?
+      csv_file_path = Rails.root.join('public', 'uploads', uploaded_file.original_filename)
+      File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
+        file.write(uploaded_file.read)
+      end
 
-    # binding.b 
-    file = File.open(file)
-    csv = CSV.parse(file, headers: true, col_sep: ';')
-    #csv.each do |row|
-      #upload_hash = {}
-      #upload_hash[:name] = row['username']
-      #upload_hash[:identifier] = row['Identifier']
-      #upload_hash[:first] = row['First name']
-      #upload_hash[:last] = row['Last name']
-    #end
-    redirect_to upload_index_path, notice: 'Users imported!'
+      # Create a new data import record
+      @data_import = DataImport.new(
+        csv_file_path: csv_file_path.to_s,
+        campus_id: current_user.campus_id,
+        district_id: current_user.district_id
+      )
+      if @data_import.save
+        redirect_to upload_index_path, notice: 'Data imported!'
+      else
+        redirect_to upload_index_path, notice: 'Data import failed. Please try again.'
+      end
+    end
+
+    if uploaded_image.present?
+      image_path = Rails.root.join('public', 'uploads', uploaded_image.original_filename)
+      File.open(Rails.root.join('public', 'uploads', uploaded_image.original_filename), 'wb') do |file|
+        file.write(uploaded_image.read)
+      end
+
+      # Create a new data import record
+      @data_import = DataImport.new(
+        image_path: image_path.to_s,
+        campus_id: params[:campus_id],
+        district_id: params[:district_id]
+      )
+      if @data_import.save
+        redirect_to upload_index_path, notice: 'Data imported!'
+      else
+        redirect_to upload_index_path, notice: 'Data import failed. Please try again.'
+      end
+    end
   end
 end

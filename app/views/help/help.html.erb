@@ -116,6 +116,12 @@ a {
 a:hover {
   color: #000;
 }
+img {
+  transform: scale(0.5);
+  border: 15px solid #333;
+  
+  
+}
 
     </style>
   </head>
@@ -188,11 +194,15 @@ a:hover {
       <h3>How do I upload data to be processed for my Campus/District?</h3>
     </div>
     <div class="faq-answer">
-      <p>Navigate to the [Upload Data] button on the navigation bar.</p>
-      <p>Download the template CSV file from our website.</p>
-      <p>Locally through a CSV editing program such as Excel or Google Sheets, edit and paste in the corresponding information.</p>
-      <p>Save the file locally and make sure it is in the ".csv" format, and then press the "Choose File" button and select the name of the .csv file you just saved</p>
-      <p>Finally hit the "Import" button to process the upload.</p>
+      <p>1. Navigate to the [Upload Data] button on the navigation bar.</p>
+      <%# <img src="app/assets/images/strongerEducatorHelp1.png" alt="Upload Data"> %>
+      <%= image_tag ("strongerEducatorHelp1.png") %>
+      <p>2. Download the template CSV file from our website.</p>
+      <p>3. Locally through a CSV editing program such as Excel or Google Sheets, edit and paste in the corresponding information.</p>
+      <%# <img src="app/assets/images/strongerEducatorHelp2.png" alt="Template Download CSV"> %>
+      <%= image_tag ("strongerEducatorHelp2.png") %>
+      <p>4. Save the file locally and make sure it is in the ".csv" format, and then press the "Choose File" button and select the name of the .csv file you just saved</p>
+      <p>5. Finally hit the "Import" button to process the upload.</p>
 
     </div>
   </div>
