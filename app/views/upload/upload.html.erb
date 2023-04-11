@@ -11,43 +11,24 @@
   <p>This is the Upload Page</p>
   <%= link_to 'Download Data Template', 'Template_for_Campus_Data_Upload.csv' %>
   <p>
-    <%= form_with url: import_upload_index_path, method: :post do |form| %>
-	<%= form.label :name, "Campus ID: " %>
-    <%= form.text_field :campus_id %>
+
+  <%= form_with(url: '/upload', method: 'post', local: true, multipart: true) do |form| %>
+    <%= form.label :campus_id, 'Campus ID:' %>
+    <%= form.text_field :campus_id, class: 'form-control', id: 'campus_id' %>
+
     <br>
 
-    <%= form.label :name, "District ID: " %>
-    <%= form.text_field :district_id %>
+    <%= form.label :district_id, 'District ID:' %>
+    <%= form.text_field :district_id, class: 'form-control', id: 'district_id' %>
+
     <br>
 
-	<%= form.file_field :file, accept: ".csv" %>
-	  <%= form.button "Import" %>
-    <% end %>
-  <%# <%= form_with model: District.new do |f| %> 
-    <%# <div class="field"> %>
-      <%# <%= f.label :'District Name' %> 
-      <%# <%= f.select :district_id, District.all.collect { |p| [p.name, p.id] }, prompt: "Select a district", id: "district-select" %> 
-      <%# <%= f.text_field :district_id, id: "district-id-field" %> 
-      <%# <br> %>
-      <%# <%= f.submit "Create" %> 
-    <%# </div> %>
-  <%# <% end %> 
-
-
-
+    <%= form.label :csv_file, 'CSV File:' %>
+    <%= form.file_field :csv_file, class: 'form-control-file', id: 'csv_file' %>
+    <%= form.submit 'Upload', class: 'btn btn-primary' %>
+  <% end %>
 
 </div>
 
-<%# 
- <script>
-  function updateDistrictIdField(value) {
-    const districtName = document.querySelector(`option[value='${value}']`).innerText;
-    document.getElementById("district-id-field").value = districtName;
-  }
-  // function updateDistrictIdField(value) {
-  //   document.querySelector('input[name="district[district_id]"]').value = value;
-  // }
-
-</script> %>
 </body>
 </html>

@@ -11,36 +11,21 @@
 
   <p>Please enter the account details.</p>
 
-  <%= form_for @data_import do |f| %>
-    <%= f.label :campus_name, "Campus ID: " %>
-    <%= f.text_field :campus_id %>
-    <% if @data_import.errors[:name].any? %>
-      <div class="flash error">
-        <   %= flash[:error] %>
-      </div>
-    <% end %>
+  <%= form_with(url: '/upload', method: 'post', local: true, multipart: true) do |form| %>
+    <%= form.label :campus_id, 'Campus ID:' %>
+    <%= form.text_field :campus_id, class: 'form-control', id: 'campus_id' %>
+
     <br>
 
-    <%= f.label :district_name, "District ID: " %>
-    <%= f.text_field :district_id %>
-    <% if @data_import.errors[:name].any? %>
-      <div class="flash error">
-        <%= flash[:error] %>
-      </div>
-    <% end %>
+    <%= form.label :district_id, 'District ID:' %>
+    <%= form.text_field :district_id, class: 'form-control', id: 'district_id' %>
+
     <br>
 
-    <%= f.label :image, "Image: " %>
-    <%= f.file_field :image %>
-    <% if @data_import.errors[:image].any? %>
-      <div class="flash error">
-        <   %= flash[:error] %>
-      </div>
-    <% end %>
-    <br>
-
-    <%= f.submit "Submit" %>
-    <% end %>
+    <%= form.label :image_file, 'Image File:' %>
+    <%= form.file_field :image_file, class: 'form-control-file', id: 'image_file' %>
+    <%= form.submit 'Upload', class: 'btn btn-primary' %>
+  <% end %>
 
 </div>
 

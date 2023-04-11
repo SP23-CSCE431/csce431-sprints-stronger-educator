@@ -10,6 +10,14 @@
 
 <body>
 <div class="body">
+
+    <p> 
+        Click <span style="text-decoration: underline; color:#00a"><%= link_to "here", download_all_path, target: "_blank" %></span> to pull all files from the database as a .zip file. <br>
+        <span style="color:#f00">WARNING</span>: This will wipe all files from the online database.
+    </p>
+
+        
+
     <p> 
         Click on a row to view its information. <br>
     </p>
@@ -25,17 +33,25 @@
         </thead>
         <tbody>
             <%# If data is not present, display a message %>
-            <% if @data_import == nil %>
+            <% if @data_import.empty? %>
                 <tr>
                     <td colspan="5">No data yet.</td>
                 </tr>
             <% else %>
                 <% @data_import.each do |data_import| %>
-                    <tr data-user-id="<%= data_import.id %>">
+                    <tr data-data_import-id="<%= data_import.id %>">
                         <td><%= data_import.campus_id %></td>
                         <td><%= data_import.district_id %></td>
-                        <td><%= data_import.files %></td>
-                        <td><%= data_import.images %></td>
+                        <td>
+                            <% if data_import.csv_file_path.present? %>
+                                <%= link_to "Download", download_csv_path(data_import), target: "_blank" %>  
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if data_import.image_path.present? %>
+                                <%= link_to "Download", download_image_path(data_import), target: "_blank"%>
+                            <% end %>
+                        </td>
                     </tr>
                 <% end %>
             <% end %>
@@ -48,9 +64,9 @@
             $('table td:nth-child(5):contains("false")').text('');
         });
 
-        $('tr[data-user-id]').click(function() {
-            var user_id = $(this).data('user-id');
-            window.location.href = "/users/" + user_id + "/edit";
+        $('tr[data-data_import-id]').click(function() {
+            var data_import_id = $(this).data('data_import-id');
+            window.location.href = "/data_imports/" + data_import_id + "/edit";
         });
 
     </script>

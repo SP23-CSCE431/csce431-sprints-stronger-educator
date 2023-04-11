@@ -4,18 +4,11 @@ class DataImportsController < ApplicationController
   def new
     @data_import = DataImport.new
   end
-  # GET /data_imports
+
   def index
-    @data_import = DataImport.all
-    render json: @data_import
+    @data_imports = DataImport.all
   end
 
-  # GET /data_imports/l
-  def show
-    @data_import = DataImport.find(params[:id])
-  end
-
-  # POST /data_imports
   def create
     begin
       @campus = Campus.find_by(id: params[:data_import][:campus_id])
@@ -28,7 +21,7 @@ class DataImportsController < ApplicationController
   
     # If both records exist, assign them to the user object
     if @campus && @district
-      @data_import = DataImport.new(data_import_params)
+      @data_import = DataImport.new
       @data_import.campus_id = @campus.id
       @data_import.district_id = @district.id
     else
@@ -37,13 +30,12 @@ class DataImportsController < ApplicationController
       return
     end
 
-    images = params[:data_import][:images]
+    csv_file = params[:data_import][:csv_file_path]
+    image_file = params[:data_import][:image_path]
 
-    if images
-      images.each do |image|
-        @data_import.attach(image)
-      end
-    end
+    @data_import.csv_file_path = save_file(csv_file) if csv_file.present?
+    @data_import.image_path = save_file(image_file) if image_file.present?
+    
 
     if @data_import.save!
       redirect_to "/data_imports/index", notice: 'Image was successfully uploaded.'
@@ -52,18 +44,60 @@ class DataImportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /data_imports/1
   def update
     if @data_import.update(data_import_params)
-      render json: @data_import
+      redirect_to @data_import, notice: "Data import was successfully updated."
     else
-      render json: @data_import.errors, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /data_imports/1
   def destroy
     @data_import.destroy
+    redirect_to "/data_imports/index", notice: "Data import was successfully destroyed."
+  end
+
+  def download_csv
+    @data_import = DataImport.find(params[:id])
+    send_file @data_import.csv_file_path, type: 'text/csv', disposition: 'attachment'
+  end
+
+  def download_image
+    @data_import = DataImport.find(params[:id])
+    send_file @data_import.image_path, type: 'image/png', disposition: 'attachment'
+  end
+
+  require 'zip'
+  def download_all
+    # download everything in the /public/uploads folder as a zip
+    uploads_folder_path = Rails.root.join('public', 'uploads').to_s
+
+    # Generate a unique filename for the zip file
+    timestamp = Time.now.strftime('%Y-%m-%d_%H-%M-%S')
+    zip_filename = "StrongerEd_#{timestamp}.zip"
+
+    # Create the zip file in memory
+    Zip::File.open(zip_filename, Zip::File::CREATE) do |zipfile|
+      # Add each file in the uploads folder to the zip file
+      Dir.glob(File.join(uploads_folder_path, '**', '*')).each do |file_path|
+        zipfile.add(file_path.sub("#{uploads_folder_path}/", ''), file_path)
+      end
+    end
+
+    # Send the zip file to the browser for download
+    send_file(zip_filename, filename: zip_filename, type: 'application/zip')
+  
+    # clear the /public/uploads folder
+    FileUtils.rm_rf(Dir.glob("#{uploads_folder_path}/*"))
+
+    # destroy all records in data_imports table
+    DataImport.destroy_all
+
+    # delete the zip file
+    File.delete(zip_filename)
+
+    redirect_to "/data_imports/index", notice: "Downloaded all files"
   end
 
   private
@@ -72,12 +106,8 @@ class DataImportsController < ApplicationController
     @data_import = DataImport.find(params[:id])
   end
 
-  def index
-    @data_imports = DataImport.all
-  end
-
   # Only allow a list of trusted parameters through
   def data_import_params
-    params.require(:data_import).permit(:files, :campus_id, :district_id, images: [])
+    params.require(:data_import).permit(:campus_id, :district_id, :csv_file_path, :image_path)
   end
 end
