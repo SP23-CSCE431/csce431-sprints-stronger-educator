@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_06_211628) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_10_203031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,12 +61,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_211628) do
   end
 
   create_table "data_imports", id: :serial, force: :cascade do |t|
-    t.binary "files", default: [], array: true
-    t.binary "images", default: [], array: true
     t.string "district_id"
     t.string "campus_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "csv_file_path"
+    t.string "image_path"
     t.index ["id"], name: "index_data_imports_on_id", unique: true
   end
 
@@ -94,5 +94,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_211628) do
   add_foreign_key "data_imports", "campuses", on_delete: :cascade
   add_foreign_key "data_imports", "districts", on_delete: :cascade
   add_foreign_key "users", "campuses", on_delete: :cascade
-  add_foreign_key "users", "districts", on_delete: :cascade
+  add_foreign_key "users", "district", on_delete: :cascade
 end

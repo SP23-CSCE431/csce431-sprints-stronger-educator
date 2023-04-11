@@ -29,3 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore the /public/uploads folder
+/public/uploads
+public/uploads/Template_for_Campus_Data_Upload.csv

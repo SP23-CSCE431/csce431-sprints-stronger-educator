@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%= stylesheet_link_tag "style.css" %>
+  <%= stylesheet_link_tag "style.css" %>
 </head>
 
 <body>
 <div class="body">
-    <%# initialize a data import object %>
-    <% @data_import = DataImport.new %>
+  <%# initialize a data import object %>
+  <% @data_import = DataImport.new %>
 
-    <p>Please enter the account details.</p>
+  <p>Please enter the account details.</p>
 
-	<%= form_for @data_import do |f| %>
-        <%= f.label :name, "Campus ID: " %>
-        <%= f.text_field :campus_id %>
-        <% if @data_import.errors[:name].any? %>
-            <div class="flash error">
-            <   %= flash[:error] %>
-            </div>
-        <% end %>
-        <br>
+  <%= form_with(url: '/upload', method: 'post', local: true, multipart: true) do |form| %>
+    <%= form.label :campus_id, 'Campus ID:' %>
+    <%= form.text_field :campus_id, class: 'form-control', id: 'campus_id' %>
 
-        <%= f.label :name, "District ID: " %>
-        <%= f.text_field :district_id %>
-        <% if @data_import.errors[:name].any? %>
-            <div class="flash error">
-                <%= flash[:error] %>
-            </div>
-        <% end %>
-        <br>
+    <br>
 
-        <%= f.label :image, "Image: " %>
-        <%= f.file_field :image %>
-        <% if @data_import.errors[:image].any? %>
-            <div class="flash error">
-            <   %= flash[:error] %>
-            </div>
-        <% end %>
-        <br>
+    <%= form.label :district_id, 'District ID:' %>
+    <%= form.text_field :district_id, class: 'form-control', id: 'district_id' %>
 
-        <%= f.submit "Submit" %>
-    <% end %>
+    <br>
+
+    <%= form.label :image_file, 'Image File:' %>
+    <%= form.file_field :image_file, class: 'form-control-file', id: 'image_file' %>
+    <%= form.submit 'Upload', class: 'btn btn-primary' %>
+  <% end %>
 
 </div>
 

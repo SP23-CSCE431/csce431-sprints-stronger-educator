@@ -33,6 +33,9 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-rails_csrf_protection'
 
 gem 'cancancan'
+gem 'rexml'
+
+gem 'jquery-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -85,4 +88,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'simplecov', :require => false
 end
