@@ -44,4 +44,6 @@ User.find_or_create_by(name: "Michael Pham", email: "phammichael1001@tamu.edu", 
 User.find_or_create_by(name: "Abhishek Sinha", email: "abhishek_sinha@tamu.edu", campus_id: "1", district_id: "1", is_admin: true)
 User.find_or_create_by(name: "Pauline C Wade", email: "paulinewade@tamu.edu", campus_id: "1", district_id: "1", is_admin: true)
 User.find_or_create_by(name: "Apurva A Shinde", email: "ashinde1112@tamu.edu", campus_id: "1", district_id: "1", is_admin: true)
+User.find_or_create_by(name: "Anthony Luevanos", email: "aluevanos@tamu.edu", campus_id: "1", district_id: "1", is_admin: true)
+User.find_or_create_by(name: "Stronger Educator", email: "stronger@strongered.com", campus_id: "1", district_id: "1", is_admin: true)
 
