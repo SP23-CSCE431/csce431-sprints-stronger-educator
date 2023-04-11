@@ -4,7 +4,7 @@
 	<%= stylesheet_link_tag "style.css" %>
 </head>
 
-<% @current_user ||= User.find_by(email: current_admin.email) %>
+<% @current_user = User.find_by(email: current_admin.email) %>
 <% @campus = campus_find_by(current_user.campus_id) %>
 <% @district = district_find_by(current_user.district_id) %>
 
@@ -16,17 +16,60 @@
   <p>
   Welcome <%= current_admin.full_name %> <br> <%= current_admin.email %> <br>
   You are assigned to campus <%= @campus.name %> (ID: <%= current_user.campus_id %>) <br>
-  You are assigned to district <%= @district.name %> (ID: <%= current_user.district_id %>)
+
+  <% if @district.id != "0" %>
+    You are assigned to district <%= @district.name %> (ID: <%= current_user.district_id %>) <br>
+  <% end %>
+
   </p>
 
-  <%#= image_tag ("Attendance_graph.png") %>
+  <div class="hidden">
+    <%= @data_imports = DataImport.where(campus_id: current_user.campus_id) %>
+  </div>
 
-  <%# <form> %>
-    <%# Dummy data that will be updated to contain a template field of data for the user to enter data into -->
-    <%# <label for="rec">Recommendation Report:</label> %>
-    <%# <input type="text" id="rec" name="rec"><br> %>
-    <%# <input type="submit" value="Submit"> %>
-  <%# </form> %>
+  <button onclick="toggleTable()">Show/Hide Table</button> 
+  <br>
+  <table id="data-imports-table">
+    <tr>
+      <th>Campus ID</th>
+      <th>District ID</th>
+      <th>CSV File</th>
+      <th>Image File</th>
+    </tr>
+    <% if @data_imports.empty? %>
+      <tr>
+          <td colspan="5">No data yet.</td>
+      </tr>
+    <% else %>
+      <% @data_imports.each do |data_import| %>
+        <tr>
+          <td><%= data_import.campus_id %></td>
+          <td><%= data_import.district_id %></td>
+          <td>
+          <% if data_import.csv_file_path.present? %>
+            <%= link_to "Download", download_csv_path(data_import), target: "_blank" %>  
+          <% end %>
+          </td>
+          <td>
+          <% if data_import.image_path.present? %>
+            <%= link_to "Download", download_image_path(data_import), target: "_blank"%>
+          <% end %>
+          </td>
+        </tr>
+      <% end %> 
+    <% end %> 
+  </table>
+
+  <script>
+    function toggleTable() {
+      var table = document.getElementById("data-imports-table");
+      if (table.style.display === "none") {
+        table.style.display = "table";
+      } else {
+        table.style.display = "none";
+      }
+    }
+  </script>
 </div>
 
 </body>

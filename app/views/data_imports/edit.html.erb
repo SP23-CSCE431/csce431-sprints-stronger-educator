@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= stylesheet_link_tag "style.css" %>
+</head>
+
+<body>
+<div class="hidden">
+    <%= @data_import = DataImport.find(params[:id]) %>
+</div>
+
+<div class="body">
+    <p> Editing information for data_import: <%= @data_import.id %> </p>
+
+    <p> CSV Path: <%= @data_import.csv_file_path %> </p>
+    <p> Image Path: <%= @data_import.image_path %> </p>
+
+    <%#= form_for @data_import, url: data_import_path(@data_import), method: :patch do |f| %>
+    <table>
+        <%# Empty Table %>
+    </table>
+
+    <%#= f.submit "Save Changes" %> 
+    <%# end %>
+
+    <%= form_with(url: data_import_path(@data_import), method: :delete, data: { confirm: 'Are you sure you want to delete this data?' }) do |form| %>
+    <%= form.submit '                  Delete Data                  ' %>
+    <% end %>
+
+</div>
+</body>
+
+</html>
