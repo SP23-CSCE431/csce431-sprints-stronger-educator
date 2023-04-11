@@ -72,7 +72,6 @@ class DataImportsController < ApplicationController
     send_file @data_import.image_path, type: 'image/png', disposition: 'attachment'
   end
 
-  require 'zip'
   def download_all
     # download everything in the /public/uploads folder as a zip
     uploads_folder_path = Rails.root.join('public', 'uploads').to_s

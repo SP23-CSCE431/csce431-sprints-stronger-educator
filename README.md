@@ -50,7 +50,7 @@ Not yet implemented
 
 ## Deployment
 
-Deployment will be from Heroku with continuous deployment from 
+https://stronger-educator-app.herokuapp.com/
 
 ## CI/CD
 
@@ -58,7 +58,7 @@ CI/CD has not been implemented fully yet
 
 ## Support
 
-The support of this app is still in development
+Support documents will be provided to the customer.
 
 ## Extra Help
 
