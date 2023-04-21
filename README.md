@@ -10,9 +10,9 @@ This code has been run and tested on:
 
 - Ruby - 3.1.2
 - Rails - 7.0.4.2
-- Ruby Gems - Listed in `Gemfile`
+- Ruby Gems - Listed in `Gemfile` (- Simplecov, Brakeman, RuboCop, omniauth)
 - PostgreSQL - 1.1
-- Docker (Latest Container)
+- Docker - 4.16.1
 
 
 ## External Dependencies
@@ -21,6 +21,10 @@ This code has been run and tested on:
 - Heroku CLI - Download latest version at https://devcenter.heroku.com/articles/heroku-cli
 - Git - Download latest version at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - GitHub Desktop (Not required but helpful) at https://desktop.github.com/
+
+## Tools
+- Jira
+
 
 ## Installation
 
@@ -31,7 +35,7 @@ Download this code repository by using git:
 ## Tests
 
 An RSpec test suite is available and can be run using:
-
+- rspec 5.0.0
 `rspec spec/` or `rails spec .`
 
 ## Execute Code
