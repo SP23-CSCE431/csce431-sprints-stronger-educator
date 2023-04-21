@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_admin!
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to root_url, alert: exception.message
   end
 
   def current_user
@@ -12,13 +12,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def campus_find_by(id)
-    @campus = Campus.find_by(id: id)
+    @campus = Campus.find_by(id:)
   end
 
   helper_method :campus_find_by
 
   def district_find_by(id)
-    @district = District.find_by(id: id)
+    @district = District.find_by(id:)
   end
 
   helper_method :district_find_by

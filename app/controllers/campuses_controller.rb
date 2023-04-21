@@ -32,7 +32,7 @@ class CampusesController < ApplicationController
 
   def update
     @campus = Campus.find(params[:id])
-    
+
     # check if district exists
     @district = District.find_by(id: params[:campus][:district_id])
     if @district.nil?

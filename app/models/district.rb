@@ -1,6 +1,6 @@
 class District < ApplicationRecord
-    self.table_name = "districts"
+  self.table_name = "districts"
 
-    validates :name, presence: true
-    validates :id, presence: true
+  validates :name, presence: true
+  validates :id, presence: true
 end

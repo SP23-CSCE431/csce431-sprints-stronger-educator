@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'data_imports/:id/download_csv', to: 'data_imports#download_csv', as: 'download_csv'
   get 'data_imports/:id/download_image', to: 'data_imports#download_image', as: 'download_image'
   get 'data_imports/download_all', to: 'data_imports#download_all', as: 'download_all'
-  
+
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
   devise_scope :admin do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
@@ -40,5 +40,4 @@ Rails.application.routes.draw do
 
   resources :campuses, except: [:show]
   get '/campuses/index', to: 'campuses#index', as: 'campuses_index'
-
 end

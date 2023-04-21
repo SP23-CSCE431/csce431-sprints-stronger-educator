@@ -1,8 +1,8 @@
-$LOAD_PATH.unshift(File.join(__dir__, '..', 'spec'))
+$:.unshift(File.join(__dir__, '..', 'spec'))
 
 # Load Rails
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 
 # Load RSpec
 require 'rspec/rails'
@@ -77,23 +77,20 @@ RSpec.configure do |config|
   #   :uid => '123545'
   #   # etc.
   # })
-
 end
-
-
 
 OmniAuth.config.test_mode = true
 
 OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
-  :provider => 'google',
-  :uid => '123545',
-  :info => {
-    :name => "Test",
-    :email => "test@test.com"
-  },
-  :credentials => {
-    :token => "token",
-    :secret => "secret"
-  }
-  # etc.
-})
+                                                              provider: 'google',
+                                                              uid: '123545',
+                                                              info: {
+                                                                name: "Test",
+                                                                email: "test@test.com"
+                                                              },
+                                                              credentials: {
+                                                                token: "token",
+                                                                secret: "secret"
+                                                              }
+                                                              # etc.
+                                                            })

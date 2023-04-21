@@ -1,5 +1,5 @@
 class DataImportsController < ApplicationController
-  before_action :set_data_imports, only: %i[ show update destroy]
+  before_action :set_data_imports, only: %i[show update destroy]
 
   def new
     @data_import = DataImport.new
@@ -13,12 +13,12 @@ class DataImportsController < ApplicationController
     begin
       @campus = Campus.find_by(id: params[:data_import][:campus_id])
       @district = District.find_by(id: params[:data_import][:district_id])
-      rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound
       flash.now[:error] = "Invalid campus or district id"
       render 'data_import'
       return
     end
-  
+
     # If both records exist, assign them to the user object
     if @campus && @district
       @data_import = DataImport.new
@@ -35,7 +35,6 @@ class DataImportsController < ApplicationController
 
     @data_import.csv_file_path = save_file(csv_file) if csv_file.present?
     @data_import.image_path = save_file(image_file) if image_file.present?
-    
 
     if @data_import.save!
       redirect_to "/data_imports/index", notice: 'Image was successfully uploaded.'
@@ -90,7 +89,7 @@ class DataImportsController < ApplicationController
 
     # Send the zip file to the browser for download
     send_file(zip_filename, filename: zip_filename, type: 'application/zip')
-  
+
     # destroy all records in data_imports table
     DataImport.destroy_all
 
@@ -104,7 +103,7 @@ class DataImportsController < ApplicationController
   end
 
   private
-  
+
   def set_data_imports
     @data_import = DataImport.find(params[:id])
   end

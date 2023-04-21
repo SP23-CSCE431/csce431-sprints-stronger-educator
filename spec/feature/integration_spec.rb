@@ -2,30 +2,28 @@
 require 'rails_helper'
 require 'integration_spec_helper'
 
-
-def login_with_oauth(service = :Google)
+def login_with_oauth(_service = :Google)
   # visit upload_path
   # click_link 'Sign in'
   Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
-
 end
 
 RSpec.feature 'Checking page content' do
   before do
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-      provider: 'google_oauth2',
-      uid: '123545',
-      info: {
-        name: "Ethan McKinney",
-        email: "ethan.mckinney@tamu.edu"
-      },
-      credentials: {
-        token: "token",
-        refresh_token: 'refresh_token',
-        expires_at: DateTime.now + 1.week
-      }
-      # etc.
-    })
+                                                                         provider: 'google_oauth2',
+                                                                         uid: '123545',
+                                                                         info: {
+                                                                           name: "Ethan McKinney",
+                                                                           email: "ethan.mckinney@tamu.edu"
+                                                                         },
+                                                                         credentials: {
+                                                                           token: "token",
+                                                                           refresh_token: 'refresh_token',
+                                                                           expires_at: DateTime.now + 1.week
+                                                                         }
+                                                                         # etc.
+                                                                       })
   end
   # let(:admin) {Admin.where(:full_name => "Ethan McKinney")}
 
@@ -109,19 +107,19 @@ end
 RSpec.feature 'Add User testing' do
   before do
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-      provider: 'google_oauth2',
-      uid: '123545',
-      info: {
-        name: "Ethan McKinney",
-        email: "ethan.mckinney@tamu.edu"
-      },
-      credentials: {
-        token: "token",
-        refresh_token: 'refresh_token',
-        expires_at: DateTime.now + 1.week
-      }
-      # etc.
-    })
+                                                                         provider: 'google_oauth2',
+                                                                         uid: '123545',
+                                                                         info: {
+                                                                           name: "Ethan McKinney",
+                                                                           email: "ethan.mckinney@tamu.edu"
+                                                                         },
+                                                                         credentials: {
+                                                                           token: "token",
+                                                                           refresh_token: 'refresh_token',
+                                                                           expires_at: DateTime.now + 1.week
+                                                                         }
+                                                                         # etc.
+                                                                       })
   end
 
   scenario 'Add Valid User' do
@@ -195,19 +193,19 @@ end
 RSpec.feature 'Add User testing' do
   before do
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-      provider: 'google_oauth2',
-      uid: '123545',
-      info: {
-        name: "Ethan McKinney",
-        email: "ethan.mckinney@tamu.edu"
-      },
-      credentials: {
-        token: "token",
-        refresh_token: 'refresh_token',
-        expires_at: DateTime.now + 1.week
-      }
-      # etc.
-    })
+                                                                         provider: 'google_oauth2',
+                                                                         uid: '123545',
+                                                                         info: {
+                                                                           name: "Ethan McKinney",
+                                                                           email: "ethan.mckinney@tamu.edu"
+                                                                         },
+                                                                         credentials: {
+                                                                           token: "token",
+                                                                           refresh_token: 'refresh_token',
+                                                                           expires_at: DateTime.now + 1.week
+                                                                         }
+                                                                         # etc.
+                                                                       })
   end
 
   scenario 'Add Valid District' do
@@ -219,9 +217,8 @@ RSpec.feature 'Add User testing' do
     # within 'form#district' do
     #   fill_in 'District ID', with: '5'
     # end
-    fill_in 'District ID', with: '5', :match => :first
+    fill_in 'District ID', with: '5', match: :first
     all('input[type="submit"]')[0].click
     expect(District.exists?(name: "Test District")).to be_truthy
   end
-
 end

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       render 'users'
       return
     end
-  
+
     # If both records exist, assign them to the user object
     if @campus && @district
       @user = User.new(user_params)
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       render 'users'
       return
     end
-    
+
     # Check if user already exists
     if User.exists?(email: @user.email)
       flash.now[:error] = "User with that email already exists. Please try again."
@@ -57,7 +57,6 @@ class UsersController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-  
 
   def destroy
     @user = User.find(params[:id])
