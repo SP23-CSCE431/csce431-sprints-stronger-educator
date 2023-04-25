@@ -1,9 +1,10 @@
-import "jquery.ui.widget";
-import "z.jquery.fileupload";
-import "@hotwired/turbo-rails"
-import "controllers"
-import "chartkick"
-import "chartkick/chart.js"
+import "./vendor/jquery.ui.widget";
+import "./vendor/z.jquery.fileupload";
+import "@hotwired/turbo-rails";
+import "controllers";
+import "chartkick";
+import "chartkick/chart.js";
+
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 
 
