@@ -36,6 +36,9 @@ gem 'cancancan'
 gem 'rexml'
 
 gem 'jquery-rails'
+gem 'aws-sdk', '~> 3'
+# gem 'aws-sdk-s3', '~> 1.110.0'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

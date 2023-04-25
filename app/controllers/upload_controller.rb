@@ -1,4 +1,5 @@
 class UploadController < ApplicationController
+  before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
   def create
     uploaded_file = params[:csv_file]
     uploaded_image = params[:image_file]

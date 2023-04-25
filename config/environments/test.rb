@@ -54,9 +54,12 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
-
+  config.web_console.permissions = '172.17.0.1'
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
   ENV['GOOGLE_OAUTH_CLIENT_ID'] = '1070650617101-nv7p8idrik0tnnn7m4kqgvduqscu3ehl.apps.googleusercontent.com'
   ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = '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'
+  ENV['S3_BUCKET_NAME'] = 'strongereducator'
+  ENV['AWS_ACCESS_KEY_ID'] = 'AKIAZHZJG4VBFHCYAFHX'
+  ENV['AWS_SECRET_ACCESS_KEY'] = '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'
 end

@@ -1,6 +1,11 @@
 class DataImportsController < ApplicationController
+<<<<<<< Updated upstream
   before_action :set_data_imports, only: %i[ show update destroy]
 
+=======
+  before_action :set_data_imports, only: %i[show update destroy]
+  before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
+>>>>>>> Stashed changes
   def new
     @data_import = DataImport.new
   end
@@ -113,4 +118,14 @@ class DataImportsController < ApplicationController
   def data_import_params
     params.require(:data_import).permit(:campus_id, :district_id, :csv_file_path, :image_path)
   end
+<<<<<<< Updated upstream
 end
+=======
+
+  # s3 bucket allowing presigned post method for users without params to upload
+  def set_s3_direct_post
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+  end
+
+end
+>>>>>>> Stashed changes
