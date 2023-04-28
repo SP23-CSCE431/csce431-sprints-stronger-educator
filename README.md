@@ -60,11 +60,15 @@ The application can then be navigated to in your browser by entering the URL htt
 ## Environmental Variables/Files
 
 Google OAuth 2 requires two keys client and client secret in the environment folder under config/environments/production at the bottom of the file
+
 ENV['GOOGLE_OAUTH_CLIENT_ID'] = 'YOUR_GOOGLE_OAUTH-CLIENT_ID_HERE'
+
 ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'YOUR_GOOGLE_OAUTH_CLIENT_SECRET_HERE'
+
 ## Deployment
 
 If the user wants to setup a new pipeline instead of using the existing pipeline
+
 Setup a Heroku account: https://signup.heroku.com/
 
 From the heroku dashboard select `New` -> `Create New Pipline`
