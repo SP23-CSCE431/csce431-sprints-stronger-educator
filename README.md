@@ -10,10 +10,14 @@ This code has been run and tested on:
 
 - Ruby - 3.1.2
 - Rails - 7.0.4.2
-- Ruby Gems - Listed in `Gemfile`
+- Ruby Gems - Listed in `Gemfile` (- Simplecov, Brakeman, RuboCop, omniauth)
 - PostgreSQL - 1.1
-- Docker (Latest Container)
+- Docker - 4.16.1
 
+##Documentation
+
+Our product and sprint backlog is located in Jira under RPCD
+Other documentation can be found through our Project Turnover sent directly to the customer
 
 ## External Dependencies
 
@@ -21,6 +25,15 @@ This code has been run and tested on:
 - Heroku CLI - Download latest version at https://devcenter.heroku.com/articles/heroku-cli
 - Git - Download latest version at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - GitHub Desktop (Not required but helpful) at https://desktop.github.com/
+
+## Tools
+- Git Hub
+- RuboCop
+- Simplecov
+- Jira
+- OAuth2
+- Others
+
 
 ## Installation
 
@@ -31,7 +44,7 @@ Download this code repository by using git:
 ## Tests
 
 An RSpec test suite is available and can be run using:
-
+- rspec 5.0.0
 `rspec spec/` or `rails spec .`
 
 ## Execute Code
@@ -46,15 +59,35 @@ The application can then be navigated to in your browser by entering the URL htt
 
 ## Environmental Variables/Files
 
-Not yet implemented
-
+Google OAuth 2 requires two keys client and client secret in the environment folder under config/environments/production at the bottom of the file
+ENV['GOOGLE_OAUTH_CLIENT_ID'] = 'YOUR_GOOGLE_OAUTH-CLIENT_ID_HERE'
+ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'YOUR_GOOGLE_OAUTH_CLIENT_SECRET_HERE'
 ## Deployment
+
+If the user wants to setup a new pipeline instead of using the existing pipeline
+Setup a Heroku account: https://signup.heroku.com/
+
+From the heroku dashboard select `New` -> `Create New Pipline`
+
+Name the pipeline, and link the respective git repo to the pipline
+
+Our application does not need any extra options, so select `Enable Review Apps` right away
+
+Click `New app` under review apps, and link your test branch from your repo
+
+Under staging app, select `Create new app` and link your main branch from your repo
 
 https://stronger-educator-app.herokuapp.com/
 
 ## CI/CD
 
-CI/CD has not been implemented fully yet
+For continuous development, we set up Heroku to automatically deploy our apps when their respective github branches are updated.
+
+  `Review app: test branch`
+
+  `Production app: main branch`
+
+For continuous integration, we set up a Github action to run our specs, security checks, linter, etc. after every push or pull-request. This allows us to automatically ensure that our code is working as intended.
 
 ## Support
 
