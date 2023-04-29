@@ -14,9 +14,9 @@ This code has been run and tested on:
 - PostgreSQL - 1.1
 - Docker - 4.16.1
 
-##Documentation
+## Documentation
 
-Our product and sprint backlog is located in Jira under RPCD
+Our product and sprint backlog is located in Jira: https://red-pandas-chillin-dog.atlassian.net/jira/software/projects/RPCD/boards/1
 Other documentation can be found through our Project Turnover sent directly to the customer
 
 ## External Dependencies
@@ -27,13 +27,11 @@ Other documentation can be found through our Project Turnover sent directly to t
 - GitHub Desktop (Not required but helpful) at https://desktop.github.com/
 
 ## Tools
-- Git Hub
+- GitHub
 - RuboCop
-- Simplecov
+- SimpleCov
 - Jira
 - OAuth2
-- Others
-
 
 ## Installation
 
@@ -68,12 +66,11 @@ ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'YOUR_GOOGLE_OAUTH_CLIENT_SECRET_HERE'
 ## Deployment
 
 If the user wants to setup a new pipeline instead of using the existing pipeline
-
 Setup a Heroku account: https://signup.heroku.com/
 
-From the heroku dashboard select `New` -> `Create New Pipline`
+From the Heroku dashboard select `New` -> `Create New Pipline`
 
-Name the pipeline, and link the respective git repo to the pipline
+Name the pipeline, and link the respective git repo to the pipeline
 
 Our application does not need any extra options, so select `Enable Review Apps` right away
 
